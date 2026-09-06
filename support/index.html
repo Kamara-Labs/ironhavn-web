@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support — Ironhavn</title>
+  <meta name="description" content="Help, FAQ, and contact for Ironhavn — self-custody EVM wallet for iPhone.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚓</text></svg>">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap">
+  <style>
+    :root {
+      --bg: #f7f8fc; --bg-card: #eef0f7; --text: #111827; --text-muted: #5c6480;
+      --accent: #2d6be4; --rule: #d4d8e8; --nav-bg: #111827; --nav-text: #dde1ec;
+      --warn-bg: #fff7ed; --warn-border: #f59e0b; --warn-text: #78350f;
+      --badge-bg: #e8effe; --badge-text: #1e40af;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #080c14; --bg-card: #131724; --text: #dde1ec; --text-muted: #5c6480;
+        --accent: #4e90ff; --rule: #1e2540; --nav-bg: #040710; --nav-text: #dde1ec;
+        --warn-bg: #1a1000; --warn-border: #d97706; --warn-text: #fde68a;
+        --badge-bg: #0f1e40; --badge-text: #93c5fd;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #080c14; --bg-card: #131724; --text: #dde1ec; --text-muted: #5c6480;
+      --accent: #4e90ff; --rule: #1e2540; --nav-bg: #040710; --nav-text: #dde1ec;
+      --warn-bg: #1a1000; --warn-border: #d97706; --warn-text: #fde68a;
+      --badge-bg: #0f1e40; --badge-text: #93c5fd;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Source Sans 3', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; font-size: 17px; -webkit-font-smoothing: antialiased; }
+    nav { background: var(--nav-bg); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    .nav-logo { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.1rem; color: var(--nav-text); text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { font-size: 0.875rem; color: var(--nav-text); text-decoration: none; opacity: 0.6; transition: opacity 0.15s; }
+    .nav-links a:hover { opacity: 1; }
+    main { max-width: 660px; margin: 0 auto; padding: 3.5rem 2rem 6rem; }
+    .page-label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    h1 { font-family: 'Libre Baskerville', Georgia, serif; font-size: 2rem; font-weight: 700; line-height: 1.25; margin-bottom: 0.4rem; }
+    .tagline { font-size: 1rem; color: var(--text-muted); font-weight: 300; margin-bottom: 2.5rem; }
+    .warn-box { background: var(--warn-bg); border-left: 3px solid var(--warn-border); border-radius: 0 6px 6px 0; padding: 1rem 1.25rem; margin-bottom: 2.75rem; font-size: 0.9rem; color: var(--warn-text); line-height: 1.65; }
+    hr { border: none; border-top: 1px solid var(--rule); margin: 2.25rem 0; }
+    h2 { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 1.1rem; }
+    h3 { font-size: 1rem; font-weight: 600; margin: 1.4rem 0 0.4rem; }
+    h3:first-child { margin-top: 0; }
+    p { margin-bottom: 0.9rem; }
+    p:last-child { margin-bottom: 0; }
+    ol, ul { padding-left: 1.3rem; margin-bottom: 0.9rem; }
+    li { margin-bottom: 0.35rem; }
+    .faq-item { border-top: 1px solid var(--rule); padding-top: 1.1rem; margin-top: 1.1rem; }
+    .faq-item:first-child { border-top: none; margin-top: 0; padding-top: 0; }
+    .faq-q { font-weight: 600; margin-bottom: 0.4rem; }
+    .faq-a { font-size: 0.93rem; color: var(--text-muted); margin: 0; line-height: 1.7; }
+    .chain-list { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0; list-style: none; margin-top: 0.5rem; }
+    .chain-list li { background: var(--badge-bg); color: var(--badge-text); font-size: 0.78rem; font-weight: 600; padding: 0.2rem 0.65rem; border-radius: 999px; margin: 0; }
+    .contact-card { background: var(--bg-card); border-radius: 8px; padding: 1.2rem 1.5rem; font-size: 0.925rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer { border-top: 1px solid var(--rule); padding: 2rem; text-align: center; font-size: 0.8rem; color: var(--text-muted); }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Ironhavn</a>
+  <ul class="nav-links">
+    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="/support">Support</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="page-label">Support</div>
+  <h1>Help &amp; FAQ</h1>
+  <p class="tagline">Ironhavn is a non-custodial wallet. Your keys never leave your device.</p>
+
+  <div class="warn-box">
+    <strong>We will never ask for your recovery phrase or private keys.</strong> Anyone who does is attempting to steal your funds.
+  </div>
+
+  <h2>Getting Started</h2>
+
+  <h3>Create a new wallet</h3>
+  <ol>
+    <li>Open Ironhavn and tap <strong>Create New Wallet</strong>.</li>
+    <li>Read the on-screen warning, then tap <strong>Continue</strong>.</li>
+    <li>Write down your 12-word recovery phrase on paper — do not screenshot or store it digitally.</li>
+    <li>Verify your recovery phrase when prompted.</li>
+    <li>Your wallet is ready. Your accounts are derived from this phrase.</li>
+  </ol>
+
+  <h3>Import an existing wallet</h3>
+  <ol>
+    <li>Tap <strong>Import Wallet</strong> on the start screen.</li>
+    <li>Enter your 12- or 24-word recovery phrase.</li>
+    <li>Ironhavn will derive your accounts and display your balances.</li>
+  </ol>
+
+  <h3>Add a watch-only address</h3>
+  <p>Tap the account selector → <strong>Add Account → Watch Address</strong>. Paste any EVM address or ENS name. Watch-only accounts display balances and history but cannot sign transactions.</p>
+
+  <h3>Send tokens</h3>
+  <ol>
+    <li>Tap <strong>Send</strong> from wallet home.</li>
+    <li>Enter the recipient address or ENS name.</li>
+    <li>Choose a token, enter the amount, and review the network fee.</li>
+    <li>Authenticate with Face ID, Touch ID, or your passcode to broadcast.</li>
+  </ol>
+
+  <h3>Receive tokens</h3>
+  <p>Tap <strong>Receive</strong> to display your QR code and address. Select the correct network before sharing — sending on the wrong network can result in permanent loss.</p>
+
+  <h3>Use the browser and dApps</h3>
+  <p>Tap the <strong>Browser</strong> tab and enter any dApp URL. When the site requests a wallet connection, review the permissions and approve. Revoke access at any time in <strong>Settings → Security → Connected Sites</strong>.</p>
+
+  <h3>Back up your recovery phrase</h3>
+  <p>Go to <strong>Settings → Security → Recovery Phrase</strong>. Authenticate, then write the words down in order on paper. Store it offline — not in a photo, note, or cloud document. If your phone is lost or damaged, this phrase is the only way to restore your wallet.</p>
+
+  <hr>
+
+  <h2>FAQ</h2>
+
+  <div class="faq-item">
+    <p class="faq-q">Which networks does Ironhavn support?</p>
+    <ul class="chain-list">
+      <li>Ethereum</li><li>Base</li><li>Arbitrum</li><li>Optimism</li><li>Polygon</li>
+    </ul>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Is Ironhavn custodial?</p>
+    <p class="faq-a">No. Your recovery phrase and private keys are generated on your device and stored in the iOS Keychain. Kamara Labs never has access to them — and cannot recover your wallet if you lose your recovery phrase.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">I lost my recovery phrase. Can you recover my wallet?</p>
+    <p class="faq-a">No. This is a fundamental property of self-custody. There is no server-side backup. If your recovery phrase is lost and your device is gone or reset, the wallet and its funds cannot be recovered by anyone.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Does Ironhavn support Bitcoin?</p>
+    <p class="faq-a">Not in this release. Ironhavn v1 supports EVM-compatible networks only. Bitcoin wallet support is planned for a future version.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">I sent tokens to the wrong address. Can you reverse it?</p>
+    <p class="faq-a">No. Blockchain transactions are irreversible once confirmed. Kamara Labs has no ability to freeze, redirect, or recover sent funds. Always double-check the address and network before broadcasting.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">A site I tried to visit was blocked. Why?</p>
+    <p class="faq-a">Ironhavn's browser includes typosquat and lookalike domain detection to protect against phishing. If a legitimate site was blocked, email us at <a href="mailto:kamaralabs@gmail.com">kamaralabs@gmail.com</a> with the URL so we can review it.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Why does every transaction require Face ID or my passcode?</p>
+    <p class="faq-a">Every send, swap, and dApp approval requires local authentication — even if you authenticated recently. This ensures a transaction can only be signed by someone physically present with your device.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Does Ironhavn support WalletConnect?</p>
+    <p class="faq-a">Not in this release. You can connect to dApps directly through the built-in browser. WalletConnect support is planned for a future version.</p>
+  </div>
+
+  <hr>
+
+  <h2>Contact</h2>
+  <div class="contact-card">
+    <p>Email <a href="mailto:kamaralabs@gmail.com">kamaralabs@gmail.com</a> with questions, bug reports, or feedback.<br><br>
+    Please include your iOS version and a description of the issue. We do not provide support for lost recovery phrases or reversed transactions.</p>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Kamara Labs LLC &nbsp;·&nbsp; <a href="/privacy">Privacy Policy</a> &nbsp;·&nbsp; <a href="/support">Support</a></p>
+</footer>
+
+</body>
+</html>
