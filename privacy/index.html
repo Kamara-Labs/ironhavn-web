@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data:; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
   <title>Privacy Policy — Ironhavn</title>
   <meta name="description" content="Ironhavn privacy policy. Non-custodial wallet — your keys never leave your device.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚓</text></svg>">
@@ -75,7 +77,7 @@
 
   <div class="summary-box">
     <strong>The short version</strong>
-    Ironhavn is a non-custodial wallet. Your recovery phrase and private keys are generated and stored on your device only — Kamara Labs never sees them. The app has no analytics SDKs, no tracking, and no cloud sync. Some network requests are made to third-party blockchain infrastructure (described below), but Kamara Labs does not collect or store your data on its own servers.
+    Ironhavn is a non-custodial wallet. Your recovery phrase and private keys are generated and stored on your device only — Kamara Labs never sees them. The app has no analytics SDKs, no advertising tracking, and no cloud wallet sync. Blockchain requests pass through the Ironhavn RPC gateway and third-party infrastructure as described below.
   </div>
 
   <h2>Information you provide directly</h2>
@@ -89,7 +91,7 @@
   <hr>
 
   <h2>Information stored locally on your device</h2>
-  <p>The following stays on your device and is not sent to Kamara Labs (Ironhavn has no backend server):</p>
+  <p>The following is stored locally on your device rather than in a Kamara Labs account database:</p>
   <ul>
     <li>Wallet and account state</li>
     <li>Transaction activity history</li>
@@ -101,10 +103,10 @@
   <hr>
 
   <h2>Information sent to third parties</h2>
-  <p>Using Ironhavn requires network requests to third-party infrastructure that Kamara Labs does not control:</p>
-  <div class="tp-item"><p><strong>Blockchain RPC providers</strong> — to read balances, estimate fees, and broadcast transactions on Ethereum, Base, Arbitrum, Optimism, and Polygon. These requests can expose your wallet address and IP address to the RPC provider.</p></div>
-  <div class="tp-item"><p><strong>LI.FI</strong> — to fetch cross-chain swap quotes and route swap transactions, when you use the Swap tab.</p></div>
-  <div class="tp-item"><p><strong>CoinGecko</strong> — to display live token prices.</p></div>
+  <p>Using Ironhavn requires network requests to service providers and sites that Kamara Labs does not control:</p>
+  <div class="tp-item"><p><strong>Cloudflare and Alchemy</strong> — Ironhavn sends blockchain RPC requests through a Cloudflare Worker operated for Kamara Labs and forwards them to Alchemy to read balances, estimate fees, and broadcast transactions on Ethereum, Base, Arbitrum, Optimism, and Polygon. Cloudflare can process your IP address and request metadata. RPC payloads can include public wallet addresses, contract calls, and signed transaction data. The Worker does not intentionally log or persist request or response bodies.</p></div>
+  <div class="tp-item"><p><strong>LI.FI</strong> — to fetch cross-chain swap quotes and route swap transactions when you use the Swap tab. Requests can include wallet addresses, token selections, amounts, and network information.</p></div>
+  <div class="tp-item"><p><strong>CoinGecko</strong> — to display live token prices. Standard network metadata, including your IP address, may be processed by the service.</p></div>
   <div class="tp-item"><p><strong>In-app browser</strong> — search queries and any site you visit are subject to those sites' own privacy practices. Ironhavn does not control what third-party sites do with your traffic.</p></div>
   <p>We do not sell your data. As of this release, Ironhavn does not include any analytics, advertising, or third-party tracking SDKs.</p>
 
@@ -115,7 +117,8 @@
     <li>Add, rename, or remove watch-only addresses at any time</li>
     <li>Review and revoke connected dApp permissions from the Security tab, per site and per permission</li>
     <li>Enable private browsing mode in the browser</li>
-    <li>Erase the local wallet vault from your device (Security tab) — irreversible unless you have separately backed up your recovery phrase</li>
+    <li>Optionally restrict direct sends to your own wallet and saved contacts</li>
+    <li>Remove saved contacts, watch-only accounts, and connected-site permissions in the app</li>
   </ul>
 
   <hr>

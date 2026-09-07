@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data:; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
   <title>Support — Ironhavn</title>
   <meta name="description" content="Help, FAQ, and contact for Ironhavn — self-custody EVM wallet for iPhone.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚓</text></svg>">
@@ -114,10 +116,13 @@
   <p>Tap <strong>Receive</strong> to display your QR code and address. Select the correct network before sharing — sending on the wrong network can result in permanent loss.</p>
 
   <h3>Use the browser and dApps</h3>
-  <p>Tap the <strong>Browser</strong> tab and enter any dApp URL. When the site requests a wallet connection, review the permissions and approve. Revoke access at any time in <strong>Settings → Security → Connected Sites</strong>.</p>
+  <p>Tap the <strong>Browser</strong> tab and enter any dApp URL. When the site requests a wallet connection, review the permissions and approve. Revoke access at any time from <strong>Connected apps</strong> in the <strong>Security</strong> tab.</p>
 
   <h3>Back up your recovery phrase</h3>
-  <p>Go to <strong>Settings → Security → Recovery Phrase</strong>. Authenticate, then write the words down in order on paper. Store it offline — not in a photo, note, or cloud document. If your phone is lost or damaged, this phrase is the only way to restore your wallet.</p>
+  <p>Open the <strong>Security</strong> tab and tap <strong>Reveal phrase</strong>. Authenticate, write the words down in order on paper, then complete the backup verification challenge. Store the phrase offline — not in a photo, note, or cloud document. If your phone is lost or damaged, this phrase is the only way to restore your wallet.</p>
+
+  <h3>Restrict direct sends to saved contacts</h3>
+  <p>In the <strong>Security</strong> tab, enable <strong>Only send to saved contacts</strong> to limit direct transfers to your own wallet and addresses you have saved after verifying them independently. This setting does not replace transaction review and does not govern dApp-initiated transactions.</p>
 
   <hr>
 
