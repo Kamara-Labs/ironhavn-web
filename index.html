@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data:; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
   <title>Ironhavn</title>
   <meta name="description" content="A native iOS self-custody wallet. Non-custodial security, cross-chain swaps, ENS, WalletConnect, DeFi research, and Bitcoin — all signed on your device.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚓</text></svg>">
@@ -173,7 +173,7 @@
       flex-shrink: 0;
     }
 
-    /* ── iPhone mockup ── */
+    /* ── Device frames (hero) ── */
     .hero-visual {
       display: flex;
       justify-content: center;
@@ -188,321 +188,217 @@
     }
 
     @keyframes float2 {
-      0%, 100% { transform: translateY(0px) rotate(2deg); }
-      50%       { transform: translateY(-12px) rotate(2deg); }
+      0%, 100% { transform: translateY(0px) rotate(2.5deg); }
+      50%       { transform: translateY(-12px) rotate(2.5deg); }
     }
 
-    .iphone-wrap {
+    .device-wrap {
       position: relative;
       display: flex;
-      align-items: center;
-      gap: 1.5rem;
+      align-items: flex-end;
+      gap: 0.8rem;
+      padding-right: 1rem;
     }
 
-    .iphone {
-      width: 230px;
-      height: 470px;
-      background: #0a0e18;
-      border-radius: 40px;
-      border: 2px solid #2a3250;
-      position: relative;
-      animation: float 5s ease-in-out infinite;
-      box-shadow:
-        0 0 0 1px #111828,
-        0 30px 80px rgba(0,0,0,0.7),
-        0 0 60px rgba(78, 144, 255, 0.08),
-        inset 0 0 0 1px rgba(255,255,255,0.04);
-      flex-shrink: 0;
-    }
-
-    .iphone.secondary {
-      width: 200px;
-      height: 408px;
-      animation: float2 6s 1.5s ease-in-out infinite;
-      opacity: 0.85;
-    }
-
-    /* Side buttons */
-    .iphone::before {
-      content: '';
-      position: absolute;
-      right: -4px;
-      top: 80px;
-      width: 3px;
-      height: 52px;
-      background: #1e2840;
-      border-radius: 0 3px 3px 0;
-      box-shadow: 0 62px 0 #1e2840;
-    }
-
-    .iphone::after {
-      content: '';
-      position: absolute;
-      left: -4px;
-      top: 70px;
-      width: 3px;
-      height: 30px;
-      background: #1e2840;
-      border-radius: 3px 0 0 3px;
-      box-shadow: 0 42px 0 #1e2840, 0 82px 0 #1e2840;
-    }
-
-    /* Dynamic island */
-    .dynamic-island {
-      position: absolute;
-      top: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 72px;
-      height: 24px;
-      background: #000;
-      border-radius: 14px;
-      z-index: 2;
-    }
-
-    .iphone.secondary .dynamic-island {
-      width: 60px;
-      height: 20px;
-    }
-
-    /* Screen content */
-    .iphone-screen {
-      position: absolute;
-      inset: 0;
-      border-radius: 38px;
-      overflow: hidden;
-      background: #080c14;
-      padding: 52px 0 24px;
+    .device-card {
       display: flex;
       flex-direction: column;
-    }
-
-    .screen-top-bar {
-      display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 0 18px;
-      margin-bottom: 14px;
+      gap: 0.5rem;
     }
 
-    .screen-addr {
-      font-size: 8.5px;
-      font-weight: 600;
-      color: #5c6480;
-      letter-spacing: 0.04em;
-      font-family: monospace;
+    /* ── iPhone 17 Pro Max ── */
+    .device-iphone17 {
+      width: 232px;
+      height: 504px;        /* 1320:2868 ≈ 1:2.173 */
+      position: relative;
+      flex-shrink: 0;
+      animation: float 5s ease-in-out infinite;
     }
 
-    .screen-network-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 0 6px #22c55e;
+    .device-iphone17 .d-frame {
+      position: absolute;
+      inset: 0;
+      border-radius: 46px;
+      background:
+        linear-gradient(145deg,
+          #d0d0d0 0%, #b8b8b8 20%,
+          #cecece 45%, #a8a8a8 65%,
+          #c4c4c4 80%, #b0b0b0 100%);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.5),
+        inset 0 0 0 2.5px #888,
+        0 0 0 1px #444,
+        0 32px 90px rgba(0,0,0,0.8),
+        0 0 60px rgba(78,144,255,0.07);
     }
 
-    /* Portfolio screen */
-    .screen-balance {
+    /* Side / power button — right */
+    .device-iphone17 .d-frame::before {
+      content: '';
+      position: absolute;
+      right: -3.5px;
+      top: 132px;
+      width: 3.5px;
+      height: 70px;
+      background: linear-gradient(to left, #999, #bbb);
+      border-radius: 0 3px 3px 0;
+    }
+
+    /* Action button + volume — left */
+    .device-iphone17 .d-frame::after {
+      content: '';
+      position: absolute;
+      left: -3.5px;
+      top: 92px;
+      width: 3.5px;
+      height: 30px;
+      background: linear-gradient(to right, #999, #bbb);
+      border-radius: 3px 0 0 3px;
+      box-shadow: 0 52px 0 #aaa, 0 94px 0 #aaa;
+    }
+
+    /* Screen bezel */
+    .device-iphone17 .d-screen {
+      position: absolute;
+      top: 3px; left: 3px; right: 3px; bottom: 3px;
+      border-radius: 43px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .device-iphone17 .d-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      border-radius: 43px;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    /* Dynamic Island */
+    .device-iphone17 .d-island {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 82px;
+      height: 28px;
+      background: #000;
+      border-radius: 14px;
+      z-index: 4;
+    }
+
+    /* USB-C */
+    .device-iphone17 .d-usbc {
+      position: absolute;
+      bottom: 7px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 5px;
+      background: #888;
+      border-radius: 3px;
+      z-index: 4;
+    }
+
+    /* Device label */
+    .device-label {
       text-align: center;
-      padding: 0 18px 16px;
-      border-bottom: 1px solid #141c2e;
-    }
-
-    .screen-balance-label {
-      font-size: 8px;
+      margin-top: 10px;
+      font-size: 9px;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #3a4060;
-      margin-bottom: 6px;
+      color: rgba(255,255,255,0.2);
     }
 
-    .screen-balance-amount {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 26px;
-      font-weight: 700;
-      color: #dde1ec;
-      line-height: 1;
+    /* ── Samsung Galaxy Z Fold 8 Ultra (cover display) ── */
+    .device-fold8 {
+      width: 192px;
+      height: 472px;        /* cover display ~22.1:9 → 192×472 */
+      position: relative;
+      flex-shrink: 0;
+      animation: float2 6s 1.5s ease-in-out infinite;
+      opacity: 0.88;
     }
 
-    .screen-balance-change {
-      font-size: 9px;
-      font-weight: 600;
-      color: #22c55e;
-      margin-top: 5px;
+    .device-fold8 .d-frame {
+      position: absolute;
+      inset: 0;
+      border-radius: 34px;
+      background:
+        linear-gradient(160deg,
+          #1c1e24 0%, #2e3038 30%,
+          #191b20 60%, #242630 100%);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.08),
+        inset 0 0 0 2px #0c0d10,
+        0 0 0 1px #050608,
+        0 24px 70px rgba(0,0,0,0.9),
+        0 0 40px rgba(0,0,0,0.6);
     }
 
-    .screen-actions {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      padding: 12px 18px 14px;
+    /* Power / fingerprint button — right */
+    .device-fold8 .d-frame::before {
+      content: '';
+      position: absolute;
+      right: -3px;
+      top: 118px;
+      width: 3px;
+      height: 44px;
+      background: linear-gradient(to left, #1a1c22, #2c2e36);
+      border-radius: 0 3px 3px 0;
     }
 
-    .screen-action {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
+    /* Volume buttons — left */
+    .device-fold8 .d-frame::after {
+      content: '';
+      position: absolute;
+      left: -3px;
+      top: 106px;
+      width: 3px;
+      height: 36px;
+      background: linear-gradient(to right, #1a1c22, #2c2e36);
+      border-radius: 3px 0 0 3px;
+      box-shadow: 0 50px 0 #222428;
     }
 
-    .screen-action-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 10px;
-      background: #1a2236;
-      border: 1px solid #242e48;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .screen-action-icon svg {
-      width: 13px;
-      height: 13px;
-      stroke: #4e90ff;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .screen-action-label {
-      font-size: 7.5px;
-      font-weight: 600;
-      color: #5c6480;
-      letter-spacing: 0.04em;
-    }
-
-    .screen-tokens {
-      flex: 1;
+    /* Screen */
+    .device-fold8 .d-screen {
+      position: absolute;
+      top: 3px; left: 3px; right: 3px; bottom: 3px;
+      border-radius: 31px;
       overflow: hidden;
-      padding: 0 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
+      background: #000;
     }
 
-    .screen-token {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 4px;
-      border-radius: 8px;
+    .device-fold8 .d-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
     }
 
-    .token-logo {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9px;
-      font-weight: 700;
-    }
-
-    .token-info { flex: 1; min-width: 0; }
-
-    .token-name {
-      font-size: 9px;
-      font-weight: 600;
-      color: #dde1ec;
-    }
-
-    .token-chain { font-size: 7.5px; color: #3a4060; margin-top: 1px; }
-    .token-value { text-align: right; }
-    .token-amount { font-size: 9px; font-weight: 600; color: #dde1ec; }
-    .token-usd { font-size: 7.5px; color: #3a4060; margin-top: 1px; }
-
-    /* DeFi screen (secondary phone) */
-    .screen-section-title {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 13px;
-      font-weight: 700;
-      color: #dde1ec;
-      padding: 4px 16px 2px;
-    }
-
-    .screen-section-sub {
-      font-size: 7.5px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #3a4060;
-      padding: 0 16px 10px;
-    }
-
-    .screen-protocol {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 14px;
-      border-bottom: 1px solid #0f1624;
-    }
-
-    .proto-logo {
-      width: 22px;
-      height: 22px;
-      border-radius: 7px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 8px;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .proto-info { flex: 1; }
-    .proto-name { font-size: 9px; font-weight: 600; color: #dde1ec; }
-    .proto-desc { font-size: 7.5px; color: #3a4060; margin-top: 1px; }
-
-    .proto-arrow {
+    /* Punch-hole camera — top right */
+    .device-fold8 .d-camera {
+      position: absolute;
+      top: 15px;
+      right: 20px;
       width: 10px;
       height: 10px;
-      stroke: #2e3550;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    /* 5-tab bar */
-    .screen-tab-bar {
-      display: flex;
-      justify-content: space-around;
-      padding: 8px 6px 6px;
-      border-top: 1px solid #141c2e;
-      margin-top: auto;
-    }
-
-    .tab-dot {
-      width: 4px;
-      height: 4px;
       border-radius: 50%;
-      background: var(--accent);
+      background: radial-gradient(circle at 35% 35%, #1a1c24, #060708);
+      z-index: 4;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
     }
-
-    .tab-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-    }
-
-    .tab-item svg {
-      width: 14px;
-      height: 14px;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      fill: none;
-    }
-
-    .tab-item.active svg { stroke: #4e90ff; }
-    .tab-item:not(.active) svg { stroke: #2e3550; }
 
     /* ── Networks ── */
     .networks-section {
@@ -926,14 +822,12 @@
       .hero-badges { justify-content: center; }
       .hero-visual { order: -1; }
 
-      .iphone.secondary { display: none; }
+      .device-fold8 { display: none; }
 
-      .iphone {
+      .device-iphone17 {
         width: 200px;
-        height: 408px;
+        height: 434px;
       }
-
-      .screen-balance-amount { font-size: 22px; }
 
       nav { padding: 0 1.5rem; }
       .nav-links { gap: 1.2rem; }
@@ -1031,182 +925,33 @@
   </div>
 
   <div class="hero-visual">
-    <div class="iphone-wrap">
-      <!-- Primary phone: Portfolio / Vault -->
-      <div class="iphone">
-        <div class="dynamic-island"></div>
-        <div class="iphone-screen">
-          <div class="screen-top-bar">
-            <span class="screen-addr">0x71C…3F4a</span>
-            <div style="display:flex;align-items:center;gap:5px;">
-              <span style="font-size:7.5px;color:#3a4060;font-weight:600;">Ethereum</span>
-              <div class="screen-network-dot"></div>
-            </div>
+    <div class="device-wrap">
+
+      <!-- iPhone 17 Pro Max — Vault screen -->
+      <div class="device-card">
+        <div class="device-iphone17">
+          <div class="d-frame"></div>
+          <div class="d-screen">
+            <img src="img/vault.jpg" alt="Ironhavn Vault — portfolio overview on iPhone 17 Pro Max">
           </div>
-          <div class="screen-balance">
-            <div class="screen-balance-label">Total balance</div>
-            <div class="screen-balance-amount">$4,821</div>
-            <div class="screen-balance-change">+$142.30 today</div>
-          </div>
-          <div class="screen-actions">
-            <div class="screen-action">
-              <div class="screen-action-icon">
-                <svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-              </div>
-              <span class="screen-action-label">Send</span>
-            </div>
-            <div class="screen-action">
-              <div class="screen-action-icon">
-                <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
-              </div>
-              <span class="screen-action-label">Receive</span>
-            </div>
-            <div class="screen-action">
-              <div class="screen-action-icon">
-                <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
-              </div>
-              <span class="screen-action-label">Swap</span>
-            </div>
-            <div class="screen-action">
-              <div class="screen-action-icon">
-                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              </div>
-              <span class="screen-action-label">Scan QR</span>
-            </div>
-          </div>
-          <div class="screen-tokens">
-            <div class="screen-token">
-              <div class="token-logo" style="background:#1a2040;color:#627eea;">Ξ</div>
-              <div class="token-info">
-                <div class="token-name">Ethereum</div>
-                <div class="token-chain">ETH · Mainnet</div>
-              </div>
-              <div class="token-value">
-                <div class="token-amount">1.42 ETH</div>
-                <div class="token-usd">$3,841</div>
-              </div>
-            </div>
-            <div class="screen-token">
-              <div class="token-logo" style="background:#1a2236;color:#2775ca;">$</div>
-              <div class="token-info">
-                <div class="token-name">USD Coin</div>
-                <div class="token-chain">USDC · Base</div>
-              </div>
-              <div class="token-value">
-                <div class="token-amount">680.00</div>
-                <div class="token-usd">$680</div>
-              </div>
-            </div>
-            <div class="screen-token">
-              <div class="token-logo" style="background:#1e1a2e;color:#8247e5;">◆</div>
-              <div class="token-info">
-                <div class="token-name">Polygon</div>
-                <div class="token-chain">POL · Polygon</div>
-              </div>
-              <div class="token-value">
-                <div class="token-amount">150.00</div>
-                <div class="token-usd">$300</div>
-              </div>
-            </div>
-          </div>
-          <!-- 5-tab bar -->
-          <div class="screen-tab-bar">
-            <div class="tab-item active">
-              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="#4e90ff"/></svg>
-              <div class="tab-dot"></div>
-            </div>
-            <div class="tab-item">
-              <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 0 1-4 4H3"/></svg>
-            </div>
-            <div class="tab-item">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            </div>
-            <div class="tab-item">
-              <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            </div>
-            <div class="tab-item">
-              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-          </div>
+          <div class="d-island"></div>
+          <div class="d-usbc"></div>
         </div>
+        <div class="device-label">iPhone 17 Pro Max</div>
       </div>
 
-      <!-- Secondary phone: DeFi tab -->
-      <div class="iphone secondary">
-        <div class="dynamic-island"></div>
-        <div class="iphone-screen">
-          <div class="screen-top-bar">
-            <span class="screen-addr">0x71C…3F4a</span>
-            <div class="screen-network-dot"></div>
+      <!-- Samsung Galaxy Z Fold 8 Ultra — Swap screen -->
+      <div class="device-card">
+        <div class="device-fold8">
+          <div class="d-frame"></div>
+          <div class="d-screen">
+            <img src="img/swap.jpg" alt="Ironhavn Swap — cross-chain swaps on Samsung Galaxy Z Fold 8 Ultra">
           </div>
-          <div class="screen-section-title">DeFi</div>
-          <div class="screen-section-sub">Curated protocols</div>
-          <div class="screen-protocol">
-            <svg style="width:22px;height:22px;flex-shrink:0;" viewBox="0 0 36 36" fill="none">
-              <defs><linearGradient id="sm-aave" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#B6509E"/><stop offset="1" stop-color="#2EBAC6"/></linearGradient></defs>
-              <path fill="url(#sm-aave)" d="M18 4C11.4 4 6 9.4 6 16v12l4-3.5 4 3.5 4-3.5 4 3.5 4-3.5V16C26 9.4 20.6 4 18 4Z"/>
-              <circle cx="13" cy="15" r="2.2" fill="white"/><circle cx="23" cy="15" r="2.2" fill="white"/>
-            </svg>
-            <div class="proto-info"><div class="proto-name">Aave</div><div class="proto-desc">Supply &amp; Borrow</div></div>
-            <svg class="proto-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-          <div class="screen-protocol">
-            <svg style="width:22px;height:22px;flex-shrink:0;" viewBox="0 0 36 36" fill="none">
-              <path d="M18 2L15 10H21Z" fill="#FF007A"/>
-              <circle cx="18" cy="21" r="12" fill="#FF007A"/>
-              <circle cx="13.5" cy="20" r="2.8" fill="white"/><circle cx="22.5" cy="20" r="2.8" fill="white"/>
-              <circle cx="13.5" cy="20" r="1.2" fill="#FF007A"/><circle cx="22.5" cy="20" r="1.2" fill="#FF007A"/>
-            </svg>
-            <div class="proto-info"><div class="proto-name">Uniswap</div><div class="proto-desc">Trade &amp; Liquidity</div></div>
-            <svg class="proto-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-          <div class="screen-protocol">
-            <svg style="width:22px;height:22px;flex-shrink:0;" viewBox="0 0 36 36" fill="none">
-              <ellipse cx="18" cy="18" rx="2.5" ry="7" fill="#2470FF"/>
-              <path d="M15.5 13C8 7 3 11 4.5 17C3.5 21 8 23 15.5 19Z" fill="#2470FF"/>
-              <path d="M20.5 13C28 7 33 11 31.5 17C32.5 21 28 23 20.5 19Z" fill="#2470FF"/>
-            </svg>
-            <div class="proto-info"><div class="proto-name">Morpho</div><div class="proto-desc">Peer-to-peer Lending</div></div>
-            <svg class="proto-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-          <div class="screen-protocol">
-            <svg style="width:22px;height:22px;flex-shrink:0;" viewBox="0 0 36 36" fill="none">
-              <circle cx="18" cy="7" r="2.5" fill="#5A6EE8"/>
-              <line x1="18" y1="7" x2="13.5" y2="25" stroke="#5A6EE8" stroke-width="2.2" stroke-linecap="round"/>
-              <circle cx="13.5" cy="29" r="5" fill="#5A6EE8"/>
-            </svg>
-            <div class="proto-info"><div class="proto-name">Pendle</div><div class="proto-desc">Yield Trading</div></div>
-            <svg class="proto-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-          <div class="screen-protocol">
-            <svg style="width:22px;height:22px;flex-shrink:0;" viewBox="0 0 36 36" fill="none">
-              <path d="M18 4L29 19L18 22.5L7 19Z" fill="#6CEAC0"/>
-              <path d="M18 33L29 19L18 22.5L7 19Z" fill="#6CEAC0" opacity="0.6"/>
-            </svg>
-            <div class="proto-info"><div class="proto-name">ether.fi</div><div class="proto-desc">Liquid Staking</div></div>
-            <svg class="proto-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-          <!-- 5-tab bar with DeFi active -->
-          <div class="screen-tab-bar">
-            <div class="tab-item">
-              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-            </div>
-            <div class="tab-item">
-              <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 0 1-4 4H3"/></svg>
-            </div>
-            <div class="tab-item">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            </div>
-            <div class="tab-item active">
-              <svg viewBox="0 0 24 24" stroke="#4e90ff"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-              <div class="tab-dot"></div>
-            </div>
-            <div class="tab-item">
-              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-          </div>
+          <div class="d-camera"></div>
         </div>
+        <div class="device-label">Galaxy Z Fold 8 Ultra</div>
       </div>
+
     </div>
   </div>
 </section>
