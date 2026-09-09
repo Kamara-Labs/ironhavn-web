@@ -778,6 +778,8 @@
       color: var(--text-muted);
     }
 
+    .proto-svg { width: 36px; height: 36px; flex-shrink: 0; }
+
     /* ── Bitcoin section ── */
     .bitcoin-section {
       border-top: 1px solid var(--rule);
@@ -1086,43 +1088,48 @@
           <div class="screen-section-title">DeFi</div>
           <div class="screen-section-sub">Curated protocols</div>
           <div class="screen-protocol">
-            <div class="proto-logo" style="background:#2c4a8a;">A</div>
-            <div class="proto-info">
-              <div class="proto-name">Aave</div>
-              <div class="proto-desc">Supply &amp; Borrow</div>
-            </div>
+            <svg style="width:22px;height:22px;flex-shrink:0;" viewBox="0 0 36 36" fill="none">
+              <defs><linearGradient id="sm-aave" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#B6509E"/><stop offset="1" stop-color="#2EBAC6"/></linearGradient></defs>
+              <path fill="url(#sm-aave)" d="M18 4C11.4 4 6 9.4 6 16v12l4-3.5 4 3.5 4-3.5 4 3.5 4-3.5V16C26 9.4 20.6 4 18 4Z"/>
+              <circle cx="13" cy="15" r="2.2" fill="white"/><circle cx="23" cy="15" r="2.2" fill="white"/>
+            </svg>
+            <div class="proto-info"><div class="proto-name">Aave</div><div class="proto-desc">Supply &amp; Borrow</div></div>
             <svg class="proto-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
           <div class="screen-protocol">
-            <div class="proto-logo" style="background:#3a1a2e;">U</div>
-            <div class="proto-info">
-              <div class="proto-name">Uniswap</div>
-              <div class="proto-desc">Trade &amp; Liquidity</div>
-            </div>
+            <svg style="width:22px;height:22px;flex-shrink:0;" viewBox="0 0 36 36" fill="none">
+              <path d="M18 2L15 10H21Z" fill="#FF007A"/>
+              <circle cx="18" cy="21" r="12" fill="#FF007A"/>
+              <circle cx="13.5" cy="20" r="2.8" fill="white"/><circle cx="22.5" cy="20" r="2.8" fill="white"/>
+              <circle cx="13.5" cy="20" r="1.2" fill="#FF007A"/><circle cx="22.5" cy="20" r="1.2" fill="#FF007A"/>
+            </svg>
+            <div class="proto-info"><div class="proto-name">Uniswap</div><div class="proto-desc">Trade &amp; Liquidity</div></div>
             <svg class="proto-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
           <div class="screen-protocol">
-            <div class="proto-logo" style="background:#251a3a;">M</div>
-            <div class="proto-info">
-              <div class="proto-name">Morpho</div>
-              <div class="proto-desc">Peer-to-peer Lending</div>
-            </div>
+            <svg style="width:22px;height:22px;flex-shrink:0;" viewBox="0 0 36 36" fill="none">
+              <ellipse cx="18" cy="18" rx="2.5" ry="7" fill="#2470FF"/>
+              <path d="M15.5 13C8 7 3 11 4.5 17C3.5 21 8 23 15.5 19Z" fill="#2470FF"/>
+              <path d="M20.5 13C28 7 33 11 31.5 17C32.5 21 28 23 20.5 19Z" fill="#2470FF"/>
+            </svg>
+            <div class="proto-info"><div class="proto-name">Morpho</div><div class="proto-desc">Peer-to-peer Lending</div></div>
             <svg class="proto-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
           <div class="screen-protocol">
-            <div class="proto-logo" style="background:#1a2a14;">P</div>
-            <div class="proto-info">
-              <div class="proto-name">Pendle</div>
-              <div class="proto-desc">Yield Trading</div>
-            </div>
+            <svg style="width:22px;height:22px;flex-shrink:0;" viewBox="0 0 36 36" fill="none">
+              <circle cx="18" cy="7" r="2.5" fill="#5A6EE8"/>
+              <line x1="18" y1="7" x2="13.5" y2="25" stroke="#5A6EE8" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="13.5" cy="29" r="5" fill="#5A6EE8"/>
+            </svg>
+            <div class="proto-info"><div class="proto-name">Pendle</div><div class="proto-desc">Yield Trading</div></div>
             <svg class="proto-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
           <div class="screen-protocol">
-            <div class="proto-logo" style="background:#0e2a22;">e</div>
-            <div class="proto-info">
-              <div class="proto-name">ether.fi</div>
-              <div class="proto-desc">Liquid Staking</div>
-            </div>
+            <svg style="width:22px;height:22px;flex-shrink:0;" viewBox="0 0 36 36" fill="none">
+              <path d="M18 4L29 19L18 22.5L7 19Z" fill="#6CEAC0"/>
+              <path d="M18 33L29 19L18 22.5L7 19Z" fill="#6CEAC0" opacity="0.6"/>
+            </svg>
+            <div class="proto-info"><div class="proto-name">ether.fi</div><div class="proto-desc">Liquid Staking</div></div>
             <svg class="proto-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
           <!-- 5-tab bar with DeFi active -->
@@ -1299,47 +1306,73 @@
   <p class="section-sub">Curated protocol shortcuts, your local wallet posture, and risk labels — all from the dedicated DeFi tab. No browser extension required.</p>
 
   <div class="protocol-grid">
+    <!-- Aave: ghost silhouette, purple→teal gradient -->
     <div class="protocol-card">
-      <div class="proto-badge" style="background:#1a3a7a;">A</div>
-      <div>
-        <h4>Aave</h4>
-        <p>Supply &amp; Borrow</p>
-      </div>
+      <svg class="proto-svg" viewBox="0 0 36 36" fill="none">
+        <defs><linearGradient id="lg-aave" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#B6509E"/><stop offset="1" stop-color="#2EBAC6"/></linearGradient></defs>
+        <path fill="url(#lg-aave)" d="M18 4C11.4 4 6 9.4 6 16v12l4-3.5 4 3.5 4-3.5 4 3.5 4-3.5V16C26 9.4 20.6 4 18 4Z"/>
+        <circle cx="13" cy="15" r="2.2" fill="white"/>
+        <circle cx="23" cy="15" r="2.2" fill="white"/>
+      </svg>
+      <div><h4>Aave</h4><p>Supply &amp; Borrow</p></div>
     </div>
+    <!-- Uniswap: unicorn face, hot pink -->
     <div class="protocol-card">
-      <div class="proto-badge" style="background:#5a1040;">U</div>
-      <div>
-        <h4>Uniswap</h4>
-        <p>Trade &amp; Liquidity</p>
-      </div>
+      <svg class="proto-svg" viewBox="0 0 36 36" fill="none">
+        <path d="M18 2L15 10H21Z" fill="#FF007A"/>
+        <circle cx="18" cy="21" r="12" fill="#FF007A"/>
+        <circle cx="13.5" cy="20" r="2.8" fill="white"/>
+        <circle cx="22.5" cy="20" r="2.8" fill="white"/>
+        <circle cx="13.5" cy="20" r="1.2" fill="#FF007A"/>
+        <circle cx="22.5" cy="20" r="1.2" fill="#FF007A"/>
+      </svg>
+      <div><h4>Uniswap</h4><p>Trade &amp; Liquidity</p></div>
     </div>
+    <!-- Morpho: butterfly, blue -->
     <div class="protocol-card">
-      <div class="proto-badge" style="background:#351a5a;">M</div>
-      <div>
-        <h4>Morpho</h4>
-        <p>Peer-to-peer Lending</p>
-      </div>
+      <svg class="proto-svg" viewBox="0 0 36 36" fill="none">
+        <ellipse cx="18" cy="18" rx="2.5" ry="7" fill="#2470FF"/>
+        <path d="M15.5 13C8 7 3 11 4.5 17C3.5 21 8 23 15.5 19Z" fill="#2470FF"/>
+        <path d="M20.5 13C28 7 33 11 31.5 17C32.5 21 28 23 20.5 19Z" fill="#2470FF"/>
+        <path d="M15.5 23C10 23 5 27 7 31C9 33.5 14 33 15.5 28Z" fill="#2470FF" opacity="0.6"/>
+        <path d="M20.5 23C26 23 31 27 29 31C27 33.5 22 33 20.5 28Z" fill="#2470FF" opacity="0.6"/>
+      </svg>
+      <div><h4>Morpho</h4><p>Peer-to-peer Lending</p></div>
     </div>
+    <!-- Pendle: pendulum / yield-over-time -->
     <div class="protocol-card">
-      <div class="proto-badge" style="background:#1e3510;">P</div>
-      <div>
-        <h4>Pendle</h4>
-        <p>Yield Trading</p>
-      </div>
+      <svg class="proto-svg" viewBox="0 0 36 36" fill="none">
+        <path d="M7 27Q14 17 18 7Q22 17 29 27" stroke="#5A6EE8" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.35"/>
+        <circle cx="18" cy="7" r="2.5" fill="#5A6EE8"/>
+        <line x1="18" y1="7" x2="13.5" y2="25" stroke="#5A6EE8" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="13.5" cy="29" r="5" fill="#5A6EE8"/>
+      </svg>
+      <div><h4>Pendle</h4><p>Yield Trading</p></div>
     </div>
+    <!-- ether.fi: ETH diamond, green -->
     <div class="protocol-card">
-      <div class="proto-badge" style="background:#0a2e20;">e</div>
-      <div>
-        <h4>ether.fi</h4>
-        <p>Liquid Staking</p>
-      </div>
+      <svg class="proto-svg" viewBox="0 0 36 36" fill="none">
+        <path d="M18 4L29 19L18 22.5L7 19Z" fill="#6CEAC0"/>
+        <path d="M18 33L29 19L18 22.5L7 19Z" fill="#6CEAC0" opacity="0.6"/>
+        <path d="M7 19L18 22.5L29 19" stroke="rgba(0,30,20,0.25)" stroke-width="1" fill="none"/>
+        <line x1="18" y1="4" x2="18" y2="22.5" stroke="rgba(0,30,20,0.15)" stroke-width="0.8"/>
+      </svg>
+      <div><h4>ether.fi</h4><p>Liquid Staking</p></div>
     </div>
+    <!-- Jumper: frog face, purple→pink gradient -->
     <div class="protocol-card">
-      <div class="proto-badge" style="background:#2e1a08;">J</div>
-      <div>
-        <h4>Jumper</h4>
-        <p>Cross-chain Bridge</p>
-      </div>
+      <svg class="proto-svg" viewBox="0 0 36 36" fill="none">
+        <defs><linearGradient id="lg-jump" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8B5CF6"/><stop offset="1" stop-color="#EC4899"/></linearGradient></defs>
+        <ellipse cx="18" cy="24" rx="10" ry="9" fill="url(#lg-jump)"/>
+        <circle cx="11.5" cy="15" r="5.5" fill="url(#lg-jump)"/>
+        <circle cx="24.5" cy="15" r="5.5" fill="url(#lg-jump)"/>
+        <circle cx="11.5" cy="14" r="3.2" fill="white"/>
+        <circle cx="24.5" cy="14" r="3.2" fill="white"/>
+        <circle cx="11.5" cy="14.5" r="1.6" fill="#1a0030"/>
+        <circle cx="24.5" cy="14.5" r="1.6" fill="#1a0030"/>
+        <path d="M13 26.5Q18 31 23 26.5" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div><h4>Jumper</h4><p>Cross-chain Bridge</p></div>
     </div>
   </div>
 </section>
