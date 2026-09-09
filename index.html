@@ -137,14 +137,18 @@
     }
 
     .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
       font-size: 0.75rem;
       font-weight: 600;
       color: var(--text-muted);
       background: var(--bg-card);
       border: 1px solid var(--bg-card-border);
-      padding: 0.22rem 0.7rem;
+      padding: 0.22rem 0.65rem 0.22rem 0.45rem;
       border-radius: 999px;
     }
+    .hero-badge svg { flex-shrink: 0; }
 
     .btn-primary {
       display: inline-flex;
@@ -963,12 +967,62 @@
     <h1>Your keys.<br>Your crypto.</h1>
     <p class="hero-sub">A native iOS wallet with non-custodial security, cross-chain swaps, ENS name resolution, WalletConnect, DeFi research, and Bitcoin — all signed on your device.</p>
     <div class="hero-badges">
-      <span class="hero-badge">Ethereum</span>
-      <span class="hero-badge">Base</span>
-      <span class="hero-badge">Arbitrum</span>
-      <span class="hero-badge">Optimism</span>
-      <span class="hero-badge">Polygon</span>
-      <span class="hero-badge" style="color:var(--orange);background:var(--orange-dim);border-color:#3a2808;">Bitcoin ₿</span>
+      <!-- Ethereum -->
+      <span class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polygon points="7,1 11.5,7.2 7,9.5 2.5,7.2" fill="#627EEA"/>
+          <polygon points="7,9.5 11.5,7.2 7,13" fill="#627EEA" opacity="0.6"/>
+          <polygon points="7,9.5 2.5,7.2 7,13" fill="#627EEA" opacity="0.45"/>
+          <line x1="7" y1="1" x2="7" y2="9.5" stroke="rgba(255,255,255,0.18)" stroke-width="0.5"/>
+        </svg>
+        Ethereum
+      </span>
+      <!-- Base -->
+      <span class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" fill="#0052FF"/>
+          <path d="M7 3.5C5.07 3.5 3.5 5.07 3.5 7C3.5 8.93 5.07 10.5 7 10.5C8.78 10.5 10.26 9.2 10.46 7.5H7V6.5H11.5C11.5 9.54 9.54 11.5 7 11.5C4.51 11.5 2.5 9.49 2.5 7C2.5 4.51 4.51 2.5 7 2.5C8.41 2.5 9.67 3.11 10.55 4.08L9.82 4.76C9.13 4.01 8.12 3.5 7 3.5Z" fill="white"/>
+        </svg>
+        Base
+      </span>
+      <!-- Arbitrum -->
+      <span class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" fill="#12AAFF"/>
+          <path d="M5.2 9.8L7 6.5L8.8 9.8H10.2L7.7 5.2C7.5 4.85 7 4.85 6.8 5.2L3.8 10.8H5.2V9.8Z" fill="white" opacity="0.9"/>
+          <path d="M7 6.5L8.1 8.6H9.5L7.7 5.2C7.5 4.85 7 4.85 6.8 5.2L6 6.7L7 6.5Z" fill="white"/>
+        </svg>
+        Arbitrum
+      </span>
+      <!-- Optimism -->
+      <span class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" fill="#FF0420"/>
+          <text x="7" y="9.8" font-size="7" font-weight="900" text-anchor="middle" fill="white" font-family="Arial,sans-serif">OP</text>
+        </svg>
+        Optimism
+      </span>
+      <!-- Polygon -->
+      <span class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" fill="#8247E5"/>
+          <polygon points="7,2.5 10.7,4.75 10.7,9.25 7,11.5 3.3,9.25 3.3,4.75" fill="none" stroke="white" stroke-width="1.1" stroke-linejoin="round"/>
+          <polygon points="7,4.8 9.2,6.05 9.2,8.55 7,9.8 4.8,8.55 4.8,6.05" fill="white" opacity="0.9"/>
+        </svg>
+        Polygon
+      </span>
+      <!-- Bitcoin -->
+      <span class="hero-badge" style="color:var(--orange);background:var(--orange-dim);border-color:#3a2808;">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" fill="#F7931A"/>
+          <path d="M5 3.5H8.5C9.6 3.5 10.3 4.1 10.3 5C10.3 5.6 9.95 6.1 9.4 6.35C10.1 6.55 10.6 7.1 10.6 7.9C10.6 9 9.7 9.7 8.4 9.7H5V3.5ZM6.2 5.85H8.1C8.7 5.85 9.1 5.55 9.1 5.1C9.1 4.65 8.7 4.4 8.1 4.4H6.2V5.85ZM6.2 8.8H8.3C9 8.8 9.4 8.45 9.4 7.95C9.4 7.45 9 7.1 8.3 7.1H6.2V8.8Z" fill="white"/>
+          <line x1="5.6" y1="3" x2="5.6" y2="2.2" stroke="white" stroke-width="0.9" stroke-linecap="round"/>
+          <line x1="7.2" y1="3" x2="7.2" y2="2.2" stroke="white" stroke-width="0.9" stroke-linecap="round"/>
+          <line x1="5.6" y1="10.5" x2="5.6" y2="11.3" stroke="white" stroke-width="0.9" stroke-linecap="round"/>
+          <line x1="7.2" y1="10.5" x2="7.2" y2="11.3" stroke="white" stroke-width="0.9" stroke-linecap="round"/>
+        </svg>
+        Bitcoin
+      </span>
     </div>
     <a class="btn-primary" href="/support">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
