@@ -195,7 +195,7 @@
     .device-wrap {
       position: relative;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       gap: 2.5rem;
       padding-right: 1rem;
     }
@@ -293,20 +293,20 @@
       color: rgba(255,255,255,0.2);
     }
 
-    /* ── Samsung Galaxy Z Fold 8 Ultra (cover display) ── */
+    /* ── Samsung Galaxy Z Fold 8 Ultra (unfolded / inner display) ── */
     .device-fold8 {
-      width: 205px;
-      height: 504px;        /* same height as iPhone 17 Pro Max; cover display ratio ~2.456:1 → 205×504 */
+      width: 318px;
+      height: 370px;        /* inner display ~6:5 ratio ≈ 0.860:1 → 318×370 */
       position: relative;
       flex-shrink: 0;
       animation: float2 6s 1.5s ease-in-out infinite;
-      opacity: 0.88;
+      opacity: 0.92;
     }
 
     .device-fold8 .d-frame {
       position: absolute;
       inset: 0;
-      border-radius: 34px;
+      border-radius: 20px;
       background:
         linear-gradient(160deg,
           #1c1e24 0%, #2e3038 30%,
@@ -316,39 +316,39 @@
         inset 0 0 0 2px #0c0d10,
         0 0 0 1px #050608,
         0 24px 70px rgba(0,0,0,0.9),
-        0 0 40px rgba(0,0,0,0.6);
+        0 0 40px rgba(0,0,0,0.5);
     }
 
-    /* Power / fingerprint button — right */
+    /* Power / fingerprint — right edge */
     .device-fold8 .d-frame::before {
       content: '';
       position: absolute;
       right: -3px;
-      top: 118px;
+      top: 88px;
       width: 3px;
-      height: 44px;
+      height: 38px;
       background: linear-gradient(to left, #1a1c22, #2c2e36);
       border-radius: 0 3px 3px 0;
     }
 
-    /* Volume buttons — left */
+    /* Volume buttons — top edge */
     .device-fold8 .d-frame::after {
       content: '';
       position: absolute;
-      left: -3px;
-      top: 106px;
-      width: 3px;
-      height: 36px;
-      background: linear-gradient(to right, #1a1c22, #2c2e36);
-      border-radius: 3px 0 0 3px;
-      box-shadow: 0 50px 0 #222428;
+      top: -3px;
+      left: 88px;
+      width: 38px;
+      height: 3px;
+      background: linear-gradient(to bottom, #1a1c22, #2c2e36);
+      border-radius: 3px 3px 0 0;
+      box-shadow: 52px 0 0 #222428;
     }
 
     /* Screen */
     .device-fold8 .d-screen {
       position: absolute;
-      top: 3px; left: 3px; right: 3px; bottom: 3px;
-      border-radius: 31px;
+      top: 2px; left: 2px; right: 2px; bottom: 2px;
+      border-radius: 18px;
       overflow: hidden;
       background: #000;
     }
@@ -364,17 +364,21 @@
       -webkit-user-drag: none;
     }
 
-    /* Punch-hole camera — top right */
+    /* Fold crease — vertical centre line */
     .device-fold8 .d-camera {
       position: absolute;
-      top: 15px;
-      right: 20px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #1a1c24, #060708);
+      top: 2px; bottom: 2px;
+      left: calc(50% - 1px);
+      width: 2px;
+      background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(0,0,0,0.35) 15%,
+        rgba(0,0,0,0.4) 50%,
+        rgba(0,0,0,0.35) 85%,
+        transparent 100%);
       z-index: 4;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
+      border-radius: 1px;
+      pointer-events: none;
     }
 
     /* ── Networks ── */
