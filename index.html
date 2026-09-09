@@ -6,7 +6,7 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data:; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
   <title>Ironhavn</title>
-  <meta name="description" content="A self-custody EVM wallet for iPhone. Your keys, your coins — on Ethereum, Base, Arbitrum, Optimism, and Polygon.">
+  <meta name="description" content="A native iOS self-custody wallet. Non-custodial security, cross-chain swaps, ENS, WalletConnect, DeFi research, and Bitcoin — all signed on your device.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚓</text></svg>">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap">
   <style>
@@ -14,11 +14,17 @@
       --bg: #080c14;
       --bg-card: #0f1624;
       --bg-card-border: #1a2236;
+      --bg-card-hover: #131e30;
       --text: #dde1ec;
       --text-muted: #5c6480;
       --text-dim: #2e3550;
       --accent: #4e90ff;
       --accent-dim: #1a3a70;
+      --accent-glow: rgba(78, 144, 255, 0.12);
+      --green: #22c55e;
+      --green-dim: #0a2e18;
+      --orange: #f59e0b;
+      --orange-dim: #2a1a04;
       --rule: #141c2e;
     }
 
@@ -118,9 +124,26 @@
       font-size: 1.05rem;
       color: var(--text-muted);
       font-weight: 300;
-      max-width: 400px;
-      margin-bottom: 2.5rem;
+      max-width: 420px;
+      margin-bottom: 2rem;
       line-height: 1.75;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      padding: 0.22rem 0.7rem;
+      border-radius: 999px;
     }
 
     .btn-primary {
@@ -152,6 +175,7 @@
       justify-content: center;
       align-items: center;
       padding: 2rem 0;
+      position: relative;
     }
 
     @keyframes float {
@@ -159,9 +183,21 @@
       50%       { transform: translateY(-18px) rotate(-2deg); }
     }
 
+    @keyframes float2 {
+      0%, 100% { transform: translateY(0px) rotate(2deg); }
+      50%       { transform: translateY(-12px) rotate(2deg); }
+    }
+
+    .iphone-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
     .iphone {
-      width: 240px;
-      height: 490px;
+      width: 230px;
+      height: 470px;
       background: #0a0e18;
       border-radius: 40px;
       border: 2px solid #2a3250;
@@ -172,6 +208,14 @@
         0 30px 80px rgba(0,0,0,0.7),
         0 0 60px rgba(78, 144, 255, 0.08),
         inset 0 0 0 1px rgba(255,255,255,0.04);
+      flex-shrink: 0;
+    }
+
+    .iphone.secondary {
+      width: 200px;
+      height: 408px;
+      animation: float2 6s 1.5s ease-in-out infinite;
+      opacity: 0.85;
     }
 
     /* Side buttons */
@@ -212,6 +256,11 @@
       z-index: 2;
     }
 
+    .iphone.secondary .dynamic-island {
+      width: 60px;
+      height: 20px;
+    }
+
     /* Screen content */
     .iphone-screen {
       position: absolute;
@@ -229,7 +278,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 18px;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
 
     .screen-addr {
@@ -248,9 +297,10 @@
       box-shadow: 0 0 6px #22c55e;
     }
 
+    /* Portfolio screen */
     .screen-balance {
       text-align: center;
-      padding: 0 18px 20px;
+      padding: 0 18px 16px;
       border-bottom: 1px solid #141c2e;
     }
 
@@ -265,7 +315,7 @@
 
     .screen-balance-amount {
       font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 700;
       color: #dde1ec;
       line-height: 1;
@@ -282,7 +332,7 @@
       display: flex;
       justify-content: center;
       gap: 14px;
-      padding: 14px 18px 16px;
+      padding: 12px 18px 14px;
     }
 
     .screen-action {
@@ -304,8 +354,8 @@
     }
 
     .screen-action-icon svg {
-      width: 14px;
-      height: 14px;
+      width: 13px;
+      height: 13px;
       stroke: #4e90ff;
       fill: none;
       stroke-width: 2;
@@ -323,71 +373,103 @@
     .screen-tokens {
       flex: 1;
       overflow: hidden;
-      padding: 0 14px;
+      padding: 0 12px;
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 1px;
     }
 
     .screen-token {
       display: flex;
       align-items: center;
-      gap: 9px;
-      padding: 7px 6px;
+      gap: 8px;
+      padding: 6px 4px;
       border-radius: 8px;
     }
 
-    .screen-token:hover { background: #0f1624; }
-
     .token-logo {
-      width: 26px;
-      height: 26px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
       flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 700;
     }
 
-    .token-info {
-      flex: 1;
-      min-width: 0;
-    }
+    .token-info { flex: 1; min-width: 0; }
 
     .token-name {
-      font-size: 9.5px;
+      font-size: 9px;
       font-weight: 600;
       color: #dde1ec;
     }
 
-    .token-chain {
-      font-size: 8px;
-      color: #3a4060;
-      margin-top: 1px;
-    }
+    .token-chain { font-size: 7.5px; color: #3a4060; margin-top: 1px; }
+    .token-value { text-align: right; }
+    .token-amount { font-size: 9px; font-weight: 600; color: #dde1ec; }
+    .token-usd { font-size: 7.5px; color: #3a4060; margin-top: 1px; }
 
-    .token-value {
-      text-align: right;
-    }
-
-    .token-amount {
-      font-size: 9.5px;
-      font-weight: 600;
+    /* DeFi screen (secondary phone) */
+    .screen-section-title {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 13px;
+      font-weight: 700;
       color: #dde1ec;
+      padding: 4px 16px 2px;
     }
 
-    .token-usd {
-      font-size: 8px;
+    .screen-section-sub {
+      font-size: 7.5px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       color: #3a4060;
-      margin-top: 1px;
+      padding: 0 16px 10px;
     }
 
+    .screen-protocol {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-bottom: 1px solid #0f1624;
+    }
+
+    .proto-logo {
+      width: 22px;
+      height: 22px;
+      border-radius: 7px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .proto-info { flex: 1; }
+    .proto-name { font-size: 9px; font-weight: 600; color: #dde1ec; }
+    .proto-desc { font-size: 7.5px; color: #3a4060; margin-top: 1px; }
+
+    .proto-arrow {
+      width: 10px;
+      height: 10px;
+      stroke: #2e3550;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* 5-tab bar */
     .screen-tab-bar {
       display: flex;
       justify-content: space-around;
-      padding: 10px 8px 6px;
+      padding: 8px 6px 6px;
       border-top: 1px solid #141c2e;
       margin-top: auto;
     }
@@ -407,8 +489,8 @@
     }
 
     .tab-item svg {
-      width: 15px;
-      height: 15px;
+      width: 14px;
+      height: 14px;
       stroke-width: 1.8;
       stroke-linecap: round;
       stroke-linejoin: round;
@@ -422,7 +504,7 @@
     .networks-section {
       border-top: 1px solid var(--rule);
       border-bottom: 1px solid var(--rule);
-      padding: 2.25rem 2.5rem;
+      padding: 2rem 2.5rem;
     }
 
     .networks-inner {
@@ -454,11 +536,17 @@
       border-radius: 999px;
     }
 
-    /* ── Features ── */
+    .chain-pill.bitcoin {
+      color: var(--orange);
+      border-color: #3a2808;
+      background: var(--orange-dim);
+    }
+
+    /* ── Section wrapper ── */
     .section {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 3.5rem 2.5rem 5rem;
+      padding: 4rem 2.5rem 5rem;
     }
 
     .section-label {
@@ -468,22 +556,61 @@
       text-transform: uppercase;
       color: var(--text-dim);
       text-align: center;
-      margin-bottom: 2.25rem;
+      margin-bottom: 0.75rem;
     }
 
+    .section-heading {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: 700;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+      text-wrap: balance;
+    }
+
+    .section-sub {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+    }
+
+    /* ── Feature grid ── */
     .features {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1px;
       background: var(--rule);
       border: 1px solid var(--rule);
-      border-radius: 14px;
+      border-radius: 16px;
       overflow: hidden;
     }
 
     .feature {
       background: var(--bg-card);
       padding: 1.75rem;
+      position: relative;
+      transition: background 0.15s;
+    }
+
+    .feature:hover { background: var(--bg-card-hover); }
+
+    .feature-new {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
     }
 
     .feature-icon {
@@ -501,17 +628,226 @@
     }
 
     .feature p {
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       color: var(--text-muted);
       line-height: 1.65;
     }
 
-    /* ── Callout ── */
+    /* ── Protection engine section ── */
+    .protection-section {
+      background: var(--bg-card);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .protection-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4.5rem 2.5rem;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .protection-copy .section-label { text-align: left; }
+
+    .protection-copy h2 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      text-wrap: balance;
+    }
+
+    .protection-copy p {
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    .protection-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .protection-card {
+      background: var(--bg);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .protection-card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .protection-card-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .protection-card h4 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .protection-card p {
+      font-size: 0.81rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── DeFi section ── */
+    .defi-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2.5rem 5rem;
+    }
+
+    .protocol-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-top: 0;
+    }
+
+    .protocol-card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .protocol-card:hover {
+      background: var(--bg-card-hover);
+      border-color: #253050;
+    }
+
+    .proto-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .protocol-card h4 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+
+    .protocol-card p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Bitcoin section ── */
+    .bitcoin-section {
+      border-top: 1px solid var(--rule);
+      background: linear-gradient(to bottom, #0d0c08, var(--bg));
+    }
+
+    .bitcoin-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 4.5rem 2.5rem 5rem;
+      text-align: center;
+    }
+
+    .bitcoin-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      background: var(--orange-dim);
+      padding: 0.28rem 0.8rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .bitcoin-inner h2 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .bitcoin-inner p {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .bitcoin-specs {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .bitcoin-spec {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--orange);
+      background: var(--orange-dim);
+      border: 1px solid #3a2808;
+      padding: 0.28rem 0.8rem;
+      border-radius: 999px;
+    }
+
+    /* ── Privacy callout ── */
     .callout-section {
       max-width: 640px;
       margin: 0 auto;
       padding: 4rem 2.5rem 5rem;
       text-align: center;
+      border-top: 1px solid var(--rule);
     }
 
     .callout-section h2 {
@@ -564,6 +900,13 @@
     .footer-links a:hover { color: var(--text); }
 
     /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .features { grid-template-columns: repeat(2, 1fr); }
+      .protection-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .protection-copy h2 { font-size: 1.5rem; }
+      .protocol-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
     @media (max-width: 760px) {
       .hero {
         grid-template-columns: 1fr;
@@ -574,8 +917,10 @@
 
       .hero-copy { align-items: center; }
       .hero-sub { max-width: 100%; }
-
+      .hero-badges { justify-content: center; }
       .hero-visual { order: -1; }
+
+      .iphone.secondary { display: none; }
 
       .iphone {
         width: 200px;
@@ -587,6 +932,13 @@
       nav { padding: 0 1.5rem; }
       .nav-links { gap: 1.2rem; }
       footer { padding: 1.5rem; }
+      .features { grid-template-columns: 1fr; }
+      .protocol-grid { grid-template-columns: 1fr; }
+
+      .section { padding: 3rem 1.5rem 4rem; }
+      .defi-section { padding: 3rem 1.5rem 4rem; }
+      .bitcoin-inner { padding: 3.5rem 1.5rem 4rem; }
+      .protection-inner { padding: 3.5rem 1.5rem; }
     }
   </style>
 </head>
@@ -595,116 +947,202 @@
 <nav>
   <a class="nav-logo" href="/">Ironhavn</a>
   <ul class="nav-links">
-    <li><a href="/support">Beta Support</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#security">Security</a></li>
     <li><a href="/support">Support</a></li>
     <li><a href="/privacy">Privacy</a></li>
   </ul>
 </nav>
 
+<!-- ── Hero ── -->
 <section class="hero">
   <div class="hero-copy">
     <span class="hero-eyebrow">Private beta for iOS</span>
-    <h1>Your keys.<br>Your coins.</h1>
-    <p class="hero-sub">A self-custody EVM wallet for iPhone. Secured by your device — not our servers.</p>
+    <h1>Your keys.<br>Your crypto.</h1>
+    <p class="hero-sub">A native iOS wallet with non-custodial security, cross-chain swaps, ENS name resolution, WalletConnect, DeFi research, and Bitcoin — all signed on your device.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">Ethereum</span>
+      <span class="hero-badge">Base</span>
+      <span class="hero-badge">Arbitrum</span>
+      <span class="hero-badge">Optimism</span>
+      <span class="hero-badge">Polygon</span>
+      <span class="hero-badge" style="color:var(--orange);background:var(--orange-dim);border-color:#3a2808;">Bitcoin ₿</span>
+    </div>
     <a class="btn-primary" href="/support">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-      TestFlight beta in progress
+      Join the TestFlight beta
     </a>
   </div>
 
   <div class="hero-visual">
-    <div class="iphone">
-      <div class="dynamic-island"></div>
-      <div class="iphone-screen">
-        <!-- Top bar -->
-        <div class="screen-top-bar">
-          <span class="screen-addr">0x71C…3F4a</span>
-          <div style="display:flex;align-items:center;gap:5px;">
-            <span style="font-size:7.5px;color:#3a4060;font-weight:600;">Ethereum</span>
+    <div class="iphone-wrap">
+      <!-- Primary phone: Portfolio / Vault -->
+      <div class="iphone">
+        <div class="dynamic-island"></div>
+        <div class="iphone-screen">
+          <div class="screen-top-bar">
+            <span class="screen-addr">0x71C…3F4a</span>
+            <div style="display:flex;align-items:center;gap:5px;">
+              <span style="font-size:7.5px;color:#3a4060;font-weight:600;">Ethereum</span>
+              <div class="screen-network-dot"></div>
+            </div>
+          </div>
+          <div class="screen-balance">
+            <div class="screen-balance-label">Total balance</div>
+            <div class="screen-balance-amount">$4,821</div>
+            <div class="screen-balance-change">+$142.30 today</div>
+          </div>
+          <div class="screen-actions">
+            <div class="screen-action">
+              <div class="screen-action-icon">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+              </div>
+              <span class="screen-action-label">Send</span>
+            </div>
+            <div class="screen-action">
+              <div class="screen-action-icon">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+              </div>
+              <span class="screen-action-label">Receive</span>
+            </div>
+            <div class="screen-action">
+              <div class="screen-action-icon">
+                <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+              </div>
+              <span class="screen-action-label">Swap</span>
+            </div>
+            <div class="screen-action">
+              <div class="screen-action-icon">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </div>
+              <span class="screen-action-label">Scan QR</span>
+            </div>
+          </div>
+          <div class="screen-tokens">
+            <div class="screen-token">
+              <div class="token-logo" style="background:#1a2040;color:#627eea;">Ξ</div>
+              <div class="token-info">
+                <div class="token-name">Ethereum</div>
+                <div class="token-chain">ETH · Mainnet</div>
+              </div>
+              <div class="token-value">
+                <div class="token-amount">1.42 ETH</div>
+                <div class="token-usd">$3,841</div>
+              </div>
+            </div>
+            <div class="screen-token">
+              <div class="token-logo" style="background:#1a2236;color:#2775ca;">$</div>
+              <div class="token-info">
+                <div class="token-name">USD Coin</div>
+                <div class="token-chain">USDC · Base</div>
+              </div>
+              <div class="token-value">
+                <div class="token-amount">680.00</div>
+                <div class="token-usd">$680</div>
+              </div>
+            </div>
+            <div class="screen-token">
+              <div class="token-logo" style="background:#1e1a2e;color:#8247e5;">◆</div>
+              <div class="token-info">
+                <div class="token-name">Polygon</div>
+                <div class="token-chain">POL · Polygon</div>
+              </div>
+              <div class="token-value">
+                <div class="token-amount">150.00</div>
+                <div class="token-usd">$300</div>
+              </div>
+            </div>
+          </div>
+          <!-- 5-tab bar -->
+          <div class="screen-tab-bar">
+            <div class="tab-item active">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="#4e90ff"/></svg>
+              <div class="tab-dot"></div>
+            </div>
+            <div class="tab-item">
+              <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+            </div>
+            <div class="tab-item">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div class="tab-item">
+              <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="tab-item">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secondary phone: DeFi tab -->
+      <div class="iphone secondary">
+        <div class="dynamic-island"></div>
+        <div class="iphone-screen">
+          <div class="screen-top-bar">
+            <span class="screen-addr">0x71C…3F4a</span>
             <div class="screen-network-dot"></div>
           </div>
-        </div>
-
-        <!-- Balance -->
-        <div class="screen-balance">
-          <div class="screen-balance-label">Total balance</div>
-          <div class="screen-balance-amount">$4,821</div>
-          <div class="screen-balance-change">+$142.30 today</div>
-        </div>
-
-        <!-- Actions -->
-        <div class="screen-actions">
-          <div class="screen-action">
-            <div class="screen-action-icon">
-              <svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+          <div class="screen-section-title">DeFi</div>
+          <div class="screen-section-sub">Curated protocols</div>
+          <div class="screen-protocol">
+            <div class="proto-logo" style="background:#2c4a8a;">A</div>
+            <div class="proto-info">
+              <div class="proto-name">Aave</div>
+              <div class="proto-desc">Supply &amp; Borrow</div>
             </div>
-            <span class="screen-action-label">Send</span>
+            <svg class="proto-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
-          <div class="screen-action">
-            <div class="screen-action-icon">
-              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          <div class="screen-protocol">
+            <div class="proto-logo" style="background:#3a1a2e;">U</div>
+            <div class="proto-info">
+              <div class="proto-name">Uniswap</div>
+              <div class="proto-desc">Trade &amp; Liquidity</div>
             </div>
-            <span class="screen-action-label">Receive</span>
+            <svg class="proto-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
-          <div class="screen-action">
-            <div class="screen-action-icon">
-              <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          <div class="screen-protocol">
+            <div class="proto-logo" style="background:#251a3a;">M</div>
+            <div class="proto-info">
+              <div class="proto-name">Morpho</div>
+              <div class="proto-desc">Peer-to-peer Lending</div>
             </div>
-            <span class="screen-action-label">Swap</span>
+            <svg class="proto-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
-        </div>
-
-        <!-- Token list -->
-        <div class="screen-tokens">
-          <div class="screen-token">
-            <div class="token-logo" style="background:#1a2040;color:#627eea;">Ξ</div>
-            <div class="token-info">
-              <div class="token-name">Ethereum</div>
-              <div class="token-chain">ETH · Mainnet</div>
+          <div class="screen-protocol">
+            <div class="proto-logo" style="background:#1a2a14;">P</div>
+            <div class="proto-info">
+              <div class="proto-name">Pendle</div>
+              <div class="proto-desc">Yield Trading</div>
             </div>
-            <div class="token-value">
-              <div class="token-amount">1.42 ETH</div>
-              <div class="token-usd">$3,841</div>
+            <svg class="proto-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="screen-protocol">
+            <div class="proto-logo" style="background:#0e2a22;">e</div>
+            <div class="proto-info">
+              <div class="proto-name">ether.fi</div>
+              <div class="proto-desc">Liquid Staking</div>
             </div>
+            <svg class="proto-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
-          <div class="screen-token">
-            <div class="token-logo" style="background:#1a2236;color:#2775ca;">$</div>
-            <div class="token-info">
-              <div class="token-name">USD Coin</div>
-              <div class="token-chain">USDC · Base</div>
+          <!-- 5-tab bar with DeFi active -->
+          <div class="screen-tab-bar">
+            <div class="tab-item">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
             </div>
-            <div class="token-value">
-              <div class="token-amount">680.00</div>
-              <div class="token-usd">$680</div>
+            <div class="tab-item">
+              <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 0 1-4 4H3"/></svg>
             </div>
-          </div>
-          <div class="screen-token">
-            <div class="token-logo" style="background:#1e1a2e;color:#8247e5;">◆</div>
-            <div class="token-info">
-              <div class="token-name">Polygon</div>
-              <div class="token-chain">POL · Polygon</div>
+            <div class="tab-item">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             </div>
-            <div class="token-value">
-              <div class="token-amount">150.00</div>
-              <div class="token-usd">$300</div>
+            <div class="tab-item active">
+              <svg viewBox="0 0 24 24" stroke="#4e90ff"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              <div class="tab-dot"></div>
             </div>
-          </div>
-        </div>
-
-        <!-- Tab bar -->
-        <div class="screen-tab-bar">
-          <div class="tab-item active">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="#4e90ff"/></svg>
-            <div class="tab-dot"></div>
-          </div>
-          <div class="tab-item">
-            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          </div>
-          <div class="tab-item">
-            <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 0 1-4 4H3"/></svg>
-          </div>
-          <div class="tab-item">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div class="tab-item">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
           </div>
         </div>
       </div>
@@ -712,53 +1150,219 @@
   </div>
 </section>
 
-<div class="networks-section">
-  <div class="networks-inner">
-    <span class="networks-label">Supported networks</span>
-    <span class="chain-pill">Ethereum</span>
-    <span class="chain-pill">Base</span>
-    <span class="chain-pill">Arbitrum</span>
-    <span class="chain-pill">Optimism</span>
-    <span class="chain-pill">Polygon</span>
-  </div>
-</div>
-
-<section class="section">
+<!-- ── Features ── -->
+<section id="features" class="section">
   <p class="section-label">What Ironhavn does</p>
+  <h2 class="section-heading">Your complete self-custody toolkit.</h2>
+  <p class="section-sub">Every feature you need to manage, protect, and grow your crypto — without giving up your keys.</p>
+
   <div class="features">
+    <!-- Row 1 -->
     <div class="feature">
       <span class="feature-icon">🔑</span>
       <h3>Non-custodial</h3>
-      <p>Your recovery phrase is generated on your device and stored in the iOS Keychain. Kamara Labs never has access to it.</p>
+      <p>Your recovery phrase is generated on-device and stored in the iOS Keychain with device-presence protection. Kamara Labs never has access to it.</p>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">🗝️</span>
+      <span class="feature-new">New</span>
+      <h3>Multiple signing wallets</h3>
+      <p>Create or import any number of independent recovery phrases. Each wallet has its own device-authenticated Keychain record — fully isolated signing paths.</p>
     </div>
     <div class="feature">
       <span class="feature-icon">🔒</span>
       <h3>Auth on every action</h3>
-      <p>Every send, swap, and dApp approval requires Face ID, Touch ID, or your passcode — even during an active session.</p>
+      <p>Every send, swap, and dApp approval requires Face ID, Touch ID, or your passcode. Auto-lock enforced in the background — even through the app switcher.</p>
     </div>
+
+    <!-- Row 2 -->
     <div class="feature">
       <span class="feature-icon">🔄</span>
       <h3>Cross-chain swaps</h3>
-      <p>Swap tokens across networks with routes aggregated by LI.FI. See fees and estimated output before you sign.</p>
+      <p>Live LI.FI quotes with real signing and broadcast. Minimal ERC-20 approvals only — the app's own risk engine flags unlimited approvals as dangerous, so it would never request one.</p>
     </div>
+    <div class="feature">
+      <span class="feature-icon">💸</span>
+      <span class="feature-new">New</span>
+      <h3>Transparent swap fees</h3>
+      <p>The confirmation screen breaks out every cost: Ironhavn integrator fee, LI.FI service fee, route-provider fees, and estimated network gas. No surprise line items.</p>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">🔤</span>
+      <span class="feature-new">New</span>
+      <h3>ENS name resolution</h3>
+      <p>Type a <code style="font-size:0.8em;color:var(--accent);background:var(--accent-dim);padding:0.1em 0.3em;border-radius:4px;">name.eth</code> address in the Send field and Ironhavn resolves it via pure on-chain reads — no third-party API, no account needed.</p>
+    </div>
+
+    <!-- Row 3 -->
     <div class="feature">
       <span class="feature-icon">🌐</span>
       <h3>Built-in dApp browser</h3>
-      <p>Browse HTTPS dApps, connect your wallet, and revoke site permissions — all from inside the app.</p>
+      <p>HTTPS-only shield, EIP-1193/EIP-6963 injection, reviewed-destination risk badges, and WebKit subframe isolation so dApps can't overwrite your connection state.</p>
     </div>
+    <div class="feature">
+      <span class="feature-icon">🔗</span>
+      <span class="feature-new">New</span>
+      <h3>WalletConnect v2</h3>
+      <p>Connect to desktop dApps by QR code. Sessions persist across launches — the relay reopens and re-subscribes automatically on startup.</p>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">📚</span>
+      <span class="feature-new">New</span>
+      <h3>Browser session management</h3>
+      <p>Per-site connected session tracking with one-tap revoke controls. Favorites and bookmarks for the dApps you use most.</p>
+    </div>
+
+    <!-- Row 4 -->
     <div class="feature">
       <span class="feature-icon">👁</span>
       <h3>Watch-only accounts</h3>
-      <p>Track any EVM address or ENS name without importing a key. Monitor balances and activity read-only.</p>
+      <p>Track any EVM address or ENS name without importing a key. Signing is blocked by construction across Send, Swap, and the dApp bridge — not just hidden behind a warning.</p>
     </div>
     <div class="feature">
-      <span class="feature-icon">🛡</span>
-      <h3>Phishing protection</h3>
-      <p>Typosquat and lookalike domain detection, address poisoning guards, and calldata decoding on every transaction review.</p>
+      <span class="feature-icon">📒</span>
+      <span class="feature-new">New</span>
+      <h3>Address book &amp; trusted contacts</h3>
+      <p>Save recipients by name. ENS destinations resolve to their on-chain address before being checked. Optional: restrict direct sends to saved contacts only.</p>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">🔔</span>
+      <span class="feature-new">New</span>
+      <h3>Push notifications</h3>
+      <p>Local banners for transaction completion, risky dApp navigation, dangerous approvals, and blocked destinations — opt-in from the Security tab.</p>
     </div>
   </div>
 </section>
 
+<!-- ── Protection engine ── -->
+<section id="security" class="protection-section">
+  <div class="protection-inner">
+    <div class="protection-copy">
+      <p class="section-label">Protection engine</p>
+      <h2>Five layers of protection on every transaction.</h2>
+      <p>Most wallets show you a hex blob and ask you to trust it. Ironhavn decodes it, simulates it, and checks it for known attacks — before you ever sign.</p>
+    </div>
+    <div class="protection-grid">
+      <div class="protection-card">
+        <div class="protection-card-icon">
+          <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div>
+          <h4>Calldata decoding</h4>
+          <p>Unlimited ERC-20 approvals and NFT <code style="font-size:0.79em;color:var(--accent);">setApprovalForAll</code> grants get explicit danger banners. Unknown function selectors show a caution flag instead of raw bytes.</p>
+        </div>
+      </div>
+      <div class="protection-card">
+        <div class="protection-card-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <h4>Pre-flight simulation</h4>
+          <p>Every dApp transaction is dry-run via <code style="font-size:0.79em;color:var(--accent);">eth_estimateGas</code> before you sign. "This transaction will revert" is surfaced before you pay for a doomed call.</p>
+        </div>
+      </div>
+      <div class="protection-card">
+        <div class="protection-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div>
+          <h4>SIWE phishing check</h4>
+          <p>Sign-In-With-Ethereum messages are parsed. If the stated domain doesn't match the requesting site, the sheet is flagged as a session-hijacking attempt.</p>
+        </div>
+      </div>
+      <div class="protection-card">
+        <div class="protection-card-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+        </div>
+        <div>
+          <h4>Typosquat shield</h4>
+          <p>Navigation to lookalike dApp domains — <code style="font-size:0.79em;color:var(--accent);">uniswap.org.evil.com</code>, <code style="font-size:0.79em;color:var(--accent);">app.uniswqp.org</code> — is blocked outright, not just warned about.</p>
+        </div>
+      </div>
+      <div class="protection-card">
+        <div class="protection-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <h4>Address-poisoning defense</h4>
+          <p>Send recipients that mimic a recent contact's first and last characters trigger a confirmation before the transfer proceeds.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DeFi section ── -->
+<section class="defi-section">
+  <p class="section-label">DeFi research</p>
+  <h2 class="section-heading">A DeFi tab. Built right in.</h2>
+  <p class="section-sub">Curated protocol shortcuts, your local wallet posture, and risk labels — all from the dedicated DeFi tab. No browser extension required.</p>
+
+  <div class="protocol-grid">
+    <div class="protocol-card">
+      <div class="proto-badge" style="background:#1a3a7a;">A</div>
+      <div>
+        <h4>Aave</h4>
+        <p>Supply &amp; Borrow</p>
+      </div>
+    </div>
+    <div class="protocol-card">
+      <div class="proto-badge" style="background:#5a1040;">U</div>
+      <div>
+        <h4>Uniswap</h4>
+        <p>Trade &amp; Liquidity</p>
+      </div>
+    </div>
+    <div class="protocol-card">
+      <div class="proto-badge" style="background:#351a5a;">M</div>
+      <div>
+        <h4>Morpho</h4>
+        <p>Peer-to-peer Lending</p>
+      </div>
+    </div>
+    <div class="protocol-card">
+      <div class="proto-badge" style="background:#1e3510;">P</div>
+      <div>
+        <h4>Pendle</h4>
+        <p>Yield Trading</p>
+      </div>
+    </div>
+    <div class="protocol-card">
+      <div class="proto-badge" style="background:#0a2e20;">e</div>
+      <div>
+        <h4>ether.fi</h4>
+        <p>Liquid Staking</p>
+      </div>
+    </div>
+    <div class="protocol-card">
+      <div class="proto-badge" style="background:#2e1a08;">J</div>
+      <div>
+        <h4>Jumper</h4>
+        <p>Cross-chain Bridge</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Bitcoin section ── -->
+<section class="bitcoin-section">
+  <div class="bitcoin-inner">
+    <div class="bitcoin-eyebrow">
+      <span>₿</span>
+      <span>In the beta</span>
+    </div>
+    <h2>Bitcoin, natively.</h2>
+    <p>Native SegWit and Taproot address tracking and sends, signed with WalletCore on your device. No custodian, no wrapped tokens, no bridge required. BTC exposure exists through wrapped assets today; the full native implementation is in active development.</p>
+    <div class="bitcoin-specs">
+      <span class="bitcoin-spec">SegWit (P2WPKH)</span>
+      <span class="bitcoin-spec">Taproot (P2TR)</span>
+      <span class="bitcoin-spec">WalletCore signing</span>
+      <span class="bitcoin-spec">Non-custodial</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── Privacy callout ── -->
 <section class="callout-section">
   <h2>No analytics. No tracking. No account required.</h2>
   <p>Your wallet state and keys live on your device. Ironhavn's RPC gateway relays blockchain requests but does not intentionally store request or response bodies. Kamara Labs does not sell personal data.</p>
