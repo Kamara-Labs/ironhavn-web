@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="943" viewBox="0 0 430 943" fill="none">
+  <title>Ironhavn Wallet — sample portfolio</title>
+  <desc>The current Wallet interface with illustrative balances totaling $47,832.50. Bitcoin $21,946.08; Ethereum $11,756.67; USDC $8,317.47; WBTC $5,012.28; AERO $800.00.</desc>
+  <!-- Marketing fixture, not live prices or wallet data. Quantities × prices round to each displayed value; all five values sum to the portfolio total. -->
+  <defs>
+    <radialGradient id="violet" cx="100%" cy="0%" r="90%"><stop stop-color="#18152e"/><stop offset="1" stop-color="#07090e" stop-opacity="0"/></radialGradient>
+    <radialGradient id="teal" cx="0%" cy="100%" r="70%"><stop stop-color="#0a2524" stop-opacity=".65"/><stop offset="1" stop-color="#07090e" stop-opacity="0"/></radialGradient>
+    <linearGradient id="glass" x1="20" y1="850" x2="410" y2="916" gradientUnits="userSpaceOnUse"><stop stop-color="#294247" stop-opacity=".92"/><stop offset=".5" stop-color="#18272d" stop-opacity=".96"/><stop offset="1" stop-color="#20202b" stop-opacity=".96"/></linearGradient>
+    <linearGradient id="glass-edge" x1="20" y1="850" x2="410" y2="916" gradientUnits="userSpaceOnUse"><stop stop-color="#466065"/><stop offset=".5" stop-color="#2b3b45"/><stop offset="1" stop-color="#30313e"/></linearGradient>
+    <g id="bitcoin"><text x="0" y="8" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="27" font-weight="600" fill="white">₿</text></g>
+    <g id="ethereum"><rect x="-10" y="-10" width="20" height="20" rx="3" transform="rotate(45)" fill="white"/></g>
+    <g id="dollar"><text x="0" y="8" text-anchor="middle" font-size="27" font-weight="700" fill="white">$</text></g>
+    <g id="aero" stroke="white" stroke-width="2.5" stroke-linejoin="round"><path d="m-13 6 13-17 13 17-13-5z"/><path d="m-13 6 13 6 13-6"/></g>
+    <path id="chevron" d="m0-4 4 4-4 4" stroke="#8c93a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </defs>
+  <style>
+    text { font-family: ui-rounded, 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; fill: #f5f5fa; }
+    .muted { fill: #8c93a6; font-weight: 500; }
+    .name { font-size: 19px; font-weight: 700; }
+    .quantity { font-size: 18px; font-weight: 600; }
+    .value { font-size: 14px; }
+    .price { font-size: 12px; }
+    .tab { font-size: 10px; font-weight: 500; text-anchor: middle; }
+  </style>
+  <path fill="#07090e" d="M0 0h430v943H0z"/>
+  <path fill="url(#violet)" d="M0 0h430v943H0z"/>
+  <path fill="url(#teal)" d="M0 0h430v943H0z"/>
+  <!-- iOS status bar and Dynamic Island, retained inside the existing animated device. -->
+  <text x="57" y="35" font-size="18" font-weight="600">9:41</text>
+  <rect x="155" y="10" width="120" height="33" rx="17" fill="#000"/>
+  <g fill="#f5f5fa"><rect x="305" y="30" width="3.5" height="5" rx="1"/><rect x="311" y="27" width="3.5" height="8" rx="1"/><rect x="317" y="24" width="3.5" height="11" rx="1"/><rect x="323" y="21" width="3.5" height="14" rx="1"/></g>
+  <g stroke="#f5f5fa" stroke-linecap="round" stroke-width="2.4"><path d="M336 25q8-7 16 0M339 29q5-4 10 0"/><path d="m343 33 1 1 1-1"/></g>
+  <rect x="361" y="21" width="27" height="15" rx="4" fill="#8c93a6"/><path d="M365 21h9v15h-9a4 4 0 0 1-4-4v-7a4 4 0 0 1 4-4" fill="#f5f5fa"/><path d="M390 26v5" stroke="#8c93a6" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="374.5" y="33" text-anchor="middle" font-size="12" font-weight="700" style="fill:#10121b">50</text>
+  <!-- App header -->
+  <text x="20" y="101" font-size="28" font-weight="700">Ironhavn</text>
+  <text x="20" y="126" class="muted" font-size="10" letter-spacing="3" style="font-weight:700">YOUR KEYS. A CALMER TOMORROW.</text>
+  <g transform="translate(343 91)"><path d="M0-10 7-7.5v7c0 5-7 9-7 9s-7-4-7-9v-7z" fill="#2bd49f"/><path d="m-3 0 2.5 3 4-6" stroke="#0b2224" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <text x="361" y="87" class="muted" font-size="13">Wallet<tspan x="361" dy="16">secured</tspan></text>
+  <!-- Wallet summary -->
+  <text x="20" y="224" font-size="42" font-weight="700">Wallet</text>
+  <text x="20" y="257" class="muted" font-size="16">Portfolio total</text>
+  <circle cx="383" cy="222" r="27" fill="#171826"/>
+  <g transform="translate(383 222)" stroke="#8c93a6" stroke-width="2.2"><path d="M-13 0Q0-16 13 0 0 16-13 0Z"/><circle r="5"/><circle r="1.5" fill="#8c93a6" stroke="none"/></g>
+  <text x="20" y="314" font-size="46" font-weight="700">$47,832.50</text>
+  <path d="M20 354h390" stroke="#8c93a6" stroke-opacity=".25" stroke-width=".6"/>
+  <text x="20" y="400" font-size="22" font-weight="700">Assets</text>
+  <g transform="translate(333 392)" stroke="#8c93a6" stroke-width="1.3" stroke-linecap="round"><path d="M0-4h13M0 0h13M0 4h13"/><circle cx="9" cy="-4" r="1.5" fill="#0a0b13"/><circle cx="4" cy="0" r="1.5" fill="#0a0b13"/><circle cx="10" cy="4" r="1.5" fill="#0a0b13"/></g>
+  <text x="410" y="397" text-anchor="end" font-size="14" class="muted">Manage</text>
+  <!-- BTC: 0.2846 × $77,112.00 = $21,946.08 -->
+  <g transform="translate(0 460)">
+    <circle cx="44" cy="12" r="24" fill="#ff9e55"/>
+    <use href="#bitcoin" transform="translate(44 12)"/>
+    <text x="82" y="0" class="name">Bitcoin</text>
+    <text x="82" y="21" font-size="14" class="muted">BTC · Bitcoin</text>
+    <text x="82" y="39" class="muted price">$77,112.00 per BTC</text>
+    <text x="385" y="8" text-anchor="end" class="quantity">0.2846</text>
+    <text x="385" y="30" text-anchor="end" class="muted value">$21,946.08</text>
+    <use href="#chevron" transform="translate(404 12)"/>
+    <path d="M20 61h390" stroke="#8c93a6" stroke-opacity=".25" stroke-width=".6"/>
+  </g>
+  <!-- ETH: 4.72 × $2,490.82 = $11,756.67 -->
+  <g transform="translate(0 559)">
+    <circle cx="44" cy="12" r="24" fill="#627dea"/>
+    <use href="#ethereum" transform="translate(44 12)"/>
+    <text x="82" y="0" class="name">Ethereum</text>
+    <text x="82" y="21" font-size="14" class="muted">ETH · Ethereum</text>
+    <text x="82" y="39" class="muted price">$2,490.82 per ETH</text>
+    <text x="385" y="8" text-anchor="end" class="quantity">4.72</text>
+    <text x="385" y="30" text-anchor="end" class="muted value">$11,756.67</text>
+    <use href="#chevron" transform="translate(404 12)"/>
+    <path d="M20 61h390" stroke="#8c93a6" stroke-opacity=".25" stroke-width=".6"/>
+  </g>
+  <!-- USDC: 8317.47 × $1.00 = $8,317.47 -->
+  <g transform="translate(0 658)">
+    <circle cx="44" cy="12" r="24" fill="#277bd8"/>
+    <use href="#dollar" transform="translate(44 12)"/>
+    <text x="82" y="0" class="name">USDC</text>
+    <text x="82" y="21" font-size="14" class="muted">USDC · Ethereum</text>
+    <text x="82" y="39" class="muted price">$1.00 per USDC</text>
+    <text x="385" y="8" text-anchor="end" class="quantity">8,317.47</text>
+    <text x="385" y="30" text-anchor="end" class="muted value">$8,317.47</text>
+    <use href="#chevron" transform="translate(404 12)"/>
+    <path d="M20 61h390" stroke="#8c93a6" stroke-opacity=".25" stroke-width=".6"/>
+  </g>
+  <!-- WBTC: 0.065 × $77,112.00 = $5,012.28 -->
+  <g transform="translate(0 757)">
+    <circle cx="44" cy="12" r="24" fill="#ff9e55"/>
+    <use href="#bitcoin" transform="translate(44 12)"/>
+    <text x="82" y="0" class="name">WBTC</text>
+    <text x="82" y="21" font-size="14" class="muted">WBTC · Ethereum</text>
+    <text x="82" y="39" class="muted price">$77,112.00 per WBTC</text>
+    <text x="385" y="8" text-anchor="end" class="quantity">0.065</text>
+    <text x="385" y="30" text-anchor="end" class="muted value">$5,012.28</text>
+    <use href="#chevron" transform="translate(404 12)"/>
+    <path d="M20 61h390" stroke="#8c93a6" stroke-opacity=".25" stroke-width=".6"/>
+  </g>
+  <!-- AERO: 1250 × $0.64 = $800.00 -->
+  <g transform="translate(0 856)">
+    <circle cx="44" cy="12" r="24" fill="#879c98"/>
+    <use href="#aero" transform="translate(44 12)"/>
+    <text x="82" y="0" class="name">AERO</text>
+    <text x="82" y="21" font-size="14" class="muted">AERO · Base</text>
+    <text x="82" y="39" class="muted price">$0.64 per AERO</text>
+    <text x="385" y="8" text-anchor="end" class="quantity">1,250</text>
+    <text x="385" y="30" text-anchor="end" class="muted value">$800.00</text>
+    <use href="#chevron" transform="translate(404 12)"/>
+    <path d="M20 61h390" stroke="#8c93a6" stroke-opacity=".25" stroke-width=".6"/>
+  </g>
+  <!-- Floating tab bar, matching the current app navigation. -->
+  <rect x="21" y="850" width="388" height="62" rx="31" fill="url(#glass)" stroke="url(#glass-edge)" stroke-width="1.2"/>
+  <rect x="23" y="852" width="384" height="58" rx="29" stroke="#b9dce0" stroke-opacity=".07" stroke-width="1.5"/>
+  <rect x="24" y="854" width="83" height="54" rx="27" fill="#91bec1" fill-opacity=".19"/>
+  <g transform="translate(66 873)" fill="#a28dff"><rect x="-9" y="-11" width="19" height="25" rx="3"/><rect x="-3" y="-13" width="7" height="5" rx="2" fill="#394e53"/><path d="M-4-3h10M-4 2h5" stroke="#465963" stroke-width="1.5" stroke-linecap="round"/></g>
+  <text x="66" y="899" class="tab" style="fill:#a28dff;font-weight:600">Wallet</text>
+  <g transform="translate(141 873)"><rect x="-12" y="-9" width="26" height="21" rx="3" fill="#e3f8ff"/><path d="M-2-4h11M-2 1h11M-2 6h11" stroke="#25404a" stroke-width="1.5" stroke-linecap="round"/><g fill="#25404a"><circle cx="-7" cy="-4" r="1.3"/><circle cx="-7" cy="1" r="1.3"/><circle cx="-7" cy="6" r="1.3"/></g></g>
+  <text x="141" y="899" class="tab">Activity</text>
+  <g transform="translate(215 874)" stroke="#e3f8ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10-7h-20l6-6M-10-7l6 6M-10 6h20l-6-6M10 6l-6 6"/></g>
+  <text x="215" y="899" class="tab">Swap</text>
+  <g transform="translate(290 874)"><circle r="12" fill="#eaf5fd"/><path d="m6-6-4 9-8 3 4-9z" fill="#17272f"/><circle r="1.5" fill="#eaf5fd"/></g>
+  <text x="290" y="899" class="tab">Discover</text>
+  <g transform="translate(364 874)" fill="#eaf0fa"><path d="m-3-12 6 0 1 4 3 1 3-2 3 5-3 3v3l3 2-3 5-4-1-2 1-1 4h-6l-1-4-3-1-3 2-3-5 3-3v-3l-3-2 3-5 4 1 2-1z"/><circle r="4.5" fill="#20232e"/></g>
+  <text x="364" y="899" class="tab">Settings</text>
+  <rect x="155" y="932" width="120" height="3" rx="1.5" fill="#f5f5fa" fill-opacity=".28"/>
+</svg>

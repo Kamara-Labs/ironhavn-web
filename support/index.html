@@ -102,27 +102,36 @@
   </ol>
 
   <h3>Add a watch-only address</h3>
-  <p>Tap the account selector → <strong>Add Account → Watch Address</strong>. Paste any EVM address or ENS name. Watch-only accounts display balances and history but cannot sign transactions.</p>
+  <p>Tap <strong>Wallet secured</strong> on the Wallet screen, then choose <strong>Add watch-only address</strong>. Paste any EVM address or ENS name. Watch-only accounts display balances and history but cannot sign transactions.</p>
 
   <h3>Send tokens</h3>
   <ol>
-    <li>Tap <strong>Send</strong> from wallet home.</li>
+    <li>Select an asset from <strong>Wallet</strong>, choose the wallet you want to use, then tap <strong>Send</strong>.</li>
     <li>Enter the recipient address or ENS name.</li>
     <li>Choose a token, enter the amount, and review the network fee.</li>
     <li>Authenticate with Face ID, Touch ID, or your passcode to broadcast.</li>
   </ol>
 
   <h3>Receive tokens</h3>
-  <p>Tap <strong>Receive</strong> to display your QR code and address. Select the correct network before sharing — sending on the wrong network can result in permanent loss.</p>
+  <p>Select an asset from <strong>Wallet</strong>, choose a wallet, then tap <strong>Receive</strong> to display its QR code and address. Select the correct network before sharing — sending on the wrong network can result in permanent loss.</p>
 
   <h3>Use the browser and dApps</h3>
-  <p>Tap the <strong>Browser</strong> tab and enter any dApp URL. When the site requests a wallet connection, review the permissions and approve. Revoke access at any time from <strong>Connected apps</strong> in the <strong>Security</strong> tab.</p>
+  <p>Tap the <strong>Discover</strong> tab and enter any dApp URL. When the site requests a wallet connection, review the permissions and approve. Revoke access at any time from <strong>Connected apps</strong> in the <strong>Settings</strong> tab.</p>
+
+  <h3>Review token spending approvals</h3>
+  <p>Open <strong>Settings → Token approvals</strong> to scan tracked ERC-20 tokens against supported routers. Select an approval to revoke, review the confirmation, and authenticate. Revocation requires an on-chain transaction and a network fee; access changes after confirmation. The scan does not cover every possible token or spender. Disconnecting a dApp session does not revoke its token allowances.</p>
+
+  <h3>Follow activity across wallets</h3>
+  <p>Open <strong>Activity</strong> to review recent confirmed transfers and locally recorded wallet events. If you have multiple accounts, use the wallet filter to narrow the timeline. Pull to refresh; network availability and history limits can affect the transfers shown.</p>
+
+  <h3>Add a custom token</h3>
+  <p>From <strong>Wallet</strong>, tap <strong>Manage → Add custom token</strong>. Choose the supported network and enter the ERC-20 contract address. Review the token details read from the contract before adding it.</p>
 
   <h3>Back up your recovery phrase</h3>
-  <p>Open the <strong>Security</strong> tab and tap <strong>Reveal phrase</strong>. Authenticate, write the words down in order on paper, then complete the backup verification challenge. Store the phrase offline — not in a photo, note, or cloud document. If your phone is lost or damaged, this phrase is the only way to restore your wallet.</p>
+  <p>Open the <strong>Settings</strong> tab and tap <strong>Reveal phrase</strong>. Authenticate, write the words down in order on paper, then complete the backup verification challenge. Store the phrase offline — not in a photo, note, or cloud document. If your phone is lost or damaged, this phrase is the only way to restore your wallet.</p>
 
   <h3>Restrict direct sends to saved contacts</h3>
-  <p>In the <strong>Security</strong> tab, enable <strong>Only send to saved contacts</strong> to limit direct transfers to your own wallet and addresses you have saved after verifying them independently. This setting does not replace transaction review and does not govern dApp-initiated transactions.</p>
+  <p>In the <strong>Settings</strong> tab, enable <strong>Only send to saved contacts</strong> to limit direct transfers to your own wallet and addresses you have saved after verifying them independently. This setting does not replace transaction review and does not govern dApp-initiated transactions.</p>
 
   <hr>
 
@@ -147,7 +156,7 @@
 
   <div class="faq-item">
     <p class="faq-q">Does Ironhavn support Bitcoin?</p>
-    <p class="faq-a">Not in this release. Ironhavn v1 supports EVM-compatible networks only. Bitcoin wallet support is planned for a future version.</p>
+    <p class="faq-a">Native Bitcoin receive and send flows are enabled in the current beta, with SegWit and Taproot address support. A Testnet4 receive-and-send check is complete; mainnet validation and additional send-flow checks remain in progress. Availability depends on your installed build.</p>
   </div>
 
   <div class="faq-item">
@@ -167,7 +176,7 @@
 
   <div class="faq-item">
     <p class="faq-q">Does Ironhavn support WalletConnect?</p>
-    <p class="faq-a">Not in this release. You can connect to dApps directly through the built-in browser. WalletConnect support is planned for a future version.</p>
+    <p class="faq-a">Yes. In <strong>Discover</strong>, use the WalletConnect controls to scan a supported dApp’s QR code or enter its pairing URI. Review the connection request before approving. Saved sessions can reconnect after restarting Ironhavn.</p>
   </div>
 
   <hr>
