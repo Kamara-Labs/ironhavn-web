@@ -739,6 +739,28 @@
     }
     .nav-logo { display: inline-flex; align-items: center; gap: 10px; }
     .nav-logo img { display: block; border-radius: 8px; }
+
+    /* Comfortable reading sizes across desktop and mobile. */
+    html { font-size: 18px; }
+    body { font-size: 1rem; line-height: 1.75; }
+    nav { min-height: 72px; height: auto; padding-top: 10px; padding-bottom: 10px; }
+    .nav-logo { font-size: 1.2rem; }
+    .nav-links a { font-size: 1rem; opacity: 1; }
+    .page-label, .section-label { font-size: 0.8rem; }
+    .nav-logo img { flex-shrink: 0; }
+    @media (max-width: 600px) {
+      nav { flex-wrap: wrap; gap: 12px; padding: 12px 20px; }
+      .nav-links { flex-wrap: wrap; gap: 16px; }
+      .nav-links a { font-size: 0.95rem; }
+    }
+    .hero-sub { font-size: 1.2rem; font-weight: 400; }
+    .section-sub, .protection-copy p, .bitcoin-copy p { font-size: 1.1rem; }
+    .feature p, .protection-card p, .protocol-card p { font-size: 1rem; line-height: 1.75; }
+    .feature h3, .protection-card h4, .protocol-card h4 { font-size: 1.15rem; line-height: 1.4; }
+    .hero-badges span, .feature-new { font-size: 0.8rem; }
+    .footer-copy, .footer-links a { font-size: 0.9rem; }
+    .section-sub, .hero-sub { max-width: 60ch; }
+    @media (max-width: 760px) { .hero-visual { order: 0; min-width: 0; } .device-iphone17 { max-width: 100%; } }
   </style>
 </head>
 <body>

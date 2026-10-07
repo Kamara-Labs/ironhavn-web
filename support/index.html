@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data:; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
   <link rel="icon" href="/favicon.ico?v=ih2" sizes="32x32">
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png?v=ih2">
   <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
@@ -20,14 +20,14 @@
     }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
-        --bg: #080c14; --bg-card: #131724; --text: #dde1ec; --text-muted: #5c6480;
+        --bg: #080c14; --bg-card: #131724; --text: #dde1ec; --text-muted: #a5afc6;
         --accent: #4e90ff; --rule: #1e2540; --nav-bg: #040710; --nav-text: #dde1ec;
         --warn-bg: #1a1000; --warn-border: #d97706; --warn-text: #fde68a;
         --badge-bg: #0f1e40; --badge-text: #93c5fd;
       }
     }
     :root[data-theme="dark"] {
-      --bg: #080c14; --bg-card: #131724; --text: #dde1ec; --text-muted: #5c6480;
+      --bg: #080c14; --bg-card: #131724; --text: #dde1ec; --text-muted: #a5afc6;
       --accent: #4e90ff; --rule: #1e2540; --nav-bg: #040710; --nav-text: #dde1ec;
       --warn-bg: #1a1000; --warn-border: #d97706; --warn-text: #fde68a;
       --badge-bg: #0f1e40; --badge-text: #93c5fd;
@@ -66,6 +66,28 @@
     footer a:hover { color: var(--accent); }
     .nav-logo { display: inline-flex; align-items: center; gap: 10px; }
     .nav-logo img { display: block; border-radius: 8px; }
+
+    /* Comfortable reading sizes across desktop and mobile. */
+    html { font-size: 18px; }
+    body { font-size: 1rem; line-height: 1.75; }
+    nav { min-height: 72px; height: auto; padding-top: 10px; padding-bottom: 10px; }
+    .nav-logo { font-size: 1.2rem; }
+    .nav-links a { font-size: 1rem; opacity: 1; }
+    .page-label, .section-label { font-size: 0.8rem; }
+    .nav-logo img { flex-shrink: 0; }
+    @media (max-width: 600px) {
+      nav { flex-wrap: wrap; gap: 12px; padding: 12px 20px; }
+      .nav-links { flex-wrap: wrap; gap: 16px; }
+      .nav-links a { font-size: 0.95rem; }
+    }
+    main { max-width: 760px; }
+    h1 { font-size: 2.4rem; }
+    h2 { font-size: 1.4rem; }
+    h3 { font-size: 1.15rem; }
+    .summary-box, .summary-box strong, .warn-box, .faq-a, .contact-card, .tagline { font-size: 1rem; }
+    .datestamp, footer { font-size: 0.9rem; }
+    .chain-list li { font-size: 0.85rem; }
+    @media (max-width: 600px) { main { padding: 2.5rem 20px 4rem; } }
   </style>
 </head>
 <body>
